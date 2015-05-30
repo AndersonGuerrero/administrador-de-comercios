@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Reporte_Recepciones" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4f0a308a-070b-4195-be89-916658ffb848">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="Table Dataset 1" uuid="a3377365-25a9-4e8a-bee0-c47bf54422b3"/>
+	<field name="CodigoRecepcion" class="java.lang.String"/>
+	<field name="CodigoProveedor" class="java.lang.String"/>
+	<field name="CodigoProducto" class="java.lang.String"/>
+	<field name="Fecha" class="java.lang.String"/>
+	<field name="Hora" class="java.lang.String"/>
+	<field name="Cantidad" class="java.lang.String"/>
+	<field name="Costo" class="java.lang.String"/>
+	<field name="Total" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="67" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="5e1fe4df-4a60-415f-b580-c8951710d58f" mode="Transparent" x="270" y="4" width="273" height="63" forecolor="#000000"/>
+				<textElement textAlignment="Center" markup="styled">
+					<font fontName="Monospaced" size="48" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Recepcion]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="74e9f8c1-0b72-4f54-985c-72cf42d963f6" x="0" y="66" width="802" height="1"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="10" splitType="Stretch"/>
+	</pageHeader>
+	<detail>
+		<band height="294" splitType="Stretch">
+			<textField>
+				<reportElement uuid="f8baa26e-47ca-4784-833a-71027640d050" x="602" y="90" width="128" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CodigoRecepcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b8058402-6b91-49d5-adda-8d9a5fc01908" x="602" y="52" width="128" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CodigoProveedor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1b7a1ce4-9781-4cd9-b44e-1722dc212c85" x="602" y="15" width="128" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CodigoProducto}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="7ded54b7-46d3-4130-9220-ca962f1e0bcf" x="106" y="15" width="139" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Codigo del Producto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a0cf0ce1-0136-40b5-b871-37e6df3b68b6" x="106" y="52" width="139" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Codigo del Proveedor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="927879e4-4896-4844-8d3c-5cbb3645751b" x="106" y="90" width="139" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Codigo de Recepcion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="acd7f3ca-12e2-4f10-a64f-da460584b775" x="106" y="122" width="139" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="77bfe4df-69df-4551-bf96-9da5eb91b8f8" x="602" y="122" width="128" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Fecha}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="f03b518e-ae20-4623-b91e-7c3e7d23db71" x="106" y="158" width="139" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Hora]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="dc57bc2b-5595-4057-bcf6-19bf858dde61" x="602" y="158" width="128" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Hora}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="c76d42b0-754c-4499-bfc3-58670700af8f" x="106" y="193" width="139" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="2eaa8de6-3f4d-4928-aafc-75d49b56ef17" x="602" y="193" width="128" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Cantidad}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="42230b28-77b0-4d5b-8df9-470e048cca13" x="106" y="229" width="139" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Costo por UD]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="29abb4d1-ad93-4dbc-ab0b-c2c67ddd738a" x="602" y="229" width="128" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Costo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="d85388b1-cbde-4a6a-ae67-d431ada63436" x="106" y="262" width="139" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="0a218e9a-6a2f-4ecb-8124-d93c37b73a6d" x="602" y="262" width="128" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Total}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="07cf2bdc-db6f-4a8a-a774-4377189ec818" x="0" y="293" width="802" height="1"/>
+			</line>
+		</band>
+	</detail>
+</jasperReport>
