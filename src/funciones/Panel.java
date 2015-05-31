@@ -9,7 +9,6 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class Panel extends JPanel {
-
 	
 	private Image imagen;
 	public Panel()
@@ -32,7 +31,6 @@ public class Panel extends JPanel {
 			return null;
 		}
 	}
-	
 	
 	public void paint(Graphics g){
 		if(imagen!=null){

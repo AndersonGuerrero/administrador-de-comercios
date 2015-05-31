@@ -6,8 +6,6 @@ import java.awt.Font;
 import javax.swing.JLabel;
 
 public class Pintar_titulo {
-
-	
 	public Pintar_titulo(JLabel label)
 	{
 		label.setForeground(Color.WHITE);

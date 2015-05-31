@@ -28,14 +28,14 @@ public class Loguin implements ActionListener,KeyListener  {
 	JLabel user,pwl;
 	JPasswordField pw;
 	JButton salir,Entar;
-	Dialogo d=new Dialogo("Identificacion", 300, 150);
+	Dialogo d=new Dialogo("Identificacion", 430, 180);
 	JLabel fondo;
 	ImageIcon icono;
 	public Loguin(JComboBox<String> list){	
 		
 		
 		fondo=new JLabel();
-		icono=new ImageIcon("Images\\login.png");
+		icono=new ImageIcon("Images//login.png");
 		fondo.setIcon(icono);
 		fondo.setBounds(50,0,150,130);
 		
@@ -44,20 +44,20 @@ public class Loguin implements ActionListener,KeyListener  {
     Entar=new JButton("Entrar");
 	Entar.setFont(new Font(null,1, 15));
 	Entar.setForeground(Color.blue);
-	Entar.setBounds(50,90,80,30);
+	Entar.setBounds(80,90,80,30);
  
 	salir=new JButton("Salir");
 	salir.setFont(new Font(null,1, 15));
 	salir.setForeground(Color.blue);
-	salir.setBounds(160,90,80,30);
+	salir.setBounds(250,90,80,30);
 	pw=new JPasswordField();
-	pw.setBounds(110,50,170,20);
+	pw.setBounds(110,50,300,30);
 	
-	pwl=new JLabel("Contraseña:");
+	pwl=new JLabel("ContraseÃ±a:");
 	pwl.setFont(new Font(null,1,14));
     pwl.setForeground(Color.WHITE);
 
-	pwl.setBounds(15,50,100,20);
+	pwl.setBounds(15,55,100,20);
 	
 	user=new JLabel("Usuario:");
 	user.setFont(new Font(null,1,14));
@@ -65,7 +65,7 @@ public class Loguin implements ActionListener,KeyListener  {
 	user.setBounds(15,15,100,20);
 	lista=new JComboBox<>();
 	barra=new JScrollPane(lista);
-	barra.setBounds(110,10,170,35);
+	barra.setBounds(110,10,300,35);
 	lista.addItem("Seleccione");
 	
 	for(int i=0;i<list.getItemCount();i++)
@@ -84,7 +84,7 @@ public class Loguin implements ActionListener,KeyListener  {
 	d.add(salir);
 	d.add(Entar);
 	d.add(fondo);
-	d.add(new Fondo(d.getWidth(),d.getHeight()));
+	d.add(new Fondo(d.getWidth()+4,d.getHeight()-12));
 	
 	
 	d.setDefaultCloseOperation(0);
@@ -120,7 +120,7 @@ public class Loguin implements ActionListener,KeyListener  {
 					d.dispose();
 				}
 				else{
-					new Mensaje().error("Contraseña Incorrecta", "Falla de Autentificación");
+					new Mensaje().error("ContraseÃ±a Incorrecta", "Falla de Autentificacion");
 				    pw.setText("");
 				    }
 			}
@@ -149,7 +149,7 @@ public class Loguin implements ActionListener,KeyListener  {
 						d.dispose();
 					}
 					else{
-						new Mensaje().error("Contraseña Incorrecta", "Falla de Autentificación");
+						new Mensaje().error("ContraseÃ±a Incorrecta", "Falla de Autentificacion");
 					    pw.setText("");
 					    }
 				}
@@ -159,19 +159,7 @@ public class Loguin implements ActionListener,KeyListener  {
 		
 	}
 
+	public void keyReleased(KeyEvent b) {}
 
-
-	public void keyReleased(KeyEvent b) {
-	
-		
-	}
-
-
-
-	public void keyTyped(KeyEvent c) {
-
-		
-	}
-
-	
+	public void keyTyped(KeyEvent c) {}	
 }

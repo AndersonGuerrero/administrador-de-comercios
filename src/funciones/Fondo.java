@@ -25,11 +25,9 @@ public class Fondo extends JPanel{
 		super();
 		setBounds(0,0,x-7,y-27);
 		//setBackground(Color.gray);
-		
     	setOpaque(false);
 	}
-	
-	
+
 	 protected void paintComponent(Graphics g) {
 	        Graphics2D g2 = (Graphics2D) g;
 	        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
@@ -81,11 +79,5 @@ public class Fondo extends JPanel{
 	    }
 	    public void setArch(int arch) {
 	        this.arch = arch;
-	    }
-	
-	
-	
-	
-	
-	
+	    }	
 }

@@ -23,7 +23,7 @@ public class Conexion_clientes {
 	  try {
 		  
 			Statement stm= com.createStatement();
-			ResultSet rs=stm.executeQuery("select *from CLIENTES where CEDULA='"+cliente.getRif()+"'");
+			ResultSet rs=stm.executeQuery("select *from clientes where CEDULA='"+cliente.getRif()+"'");
 			Statement stm2= com.createStatement();
 			rs.next();
 			
@@ -36,7 +36,7 @@ public class Conexion_clientes {
 		}
 		else
 		{
-		  stm2.execute("insert into CLIENTES values('"+cliente.getRif()+"','"+cliente.getNombre()+"','"+cliente.getApellido()+"','"+cliente.getDireccion()+"')");
+		  stm2.execute("insert into clientes values('"+cliente.getRif()+"','"+cliente.getNombre()+"','"+cliente.getApellido()+"','"+cliente.getDireccion()+"')");
 		  stm2.close();
 		}
 		
@@ -54,7 +54,7 @@ public class Conexion_clientes {
 		
 		try {
 			Statement stm= com.createStatement();
-			ResultSet rs=stm.executeQuery("select *from CLIENTES where NOMBRE like '%"+texto+"%' or CEDULA LIKE '%"+texto+"%' or APELLIDO LIKE '%"+texto+"%' or DIRECCION LIKE '%"+texto+"%'");
+			ResultSet rs=stm.executeQuery("select *from clientes where NOMBRE like '%"+texto+"%' or CEDULA LIKE '%"+texto+"%' or APELLIDO LIKE '%"+texto+"%' or DIRECCION LIKE '%"+texto+"%'");
 			
 			
 			while(rs.next())
@@ -83,7 +83,7 @@ public class Conexion_clientes {
 		
 		try {
 			Statement stm= com.createStatement();
-			ResultSet rs=stm.executeQuery("select *from CLIENTES where CEDULA='"+cedula+"'");
+			ResultSet rs=stm.executeQuery("select *from clientes where CEDULA='"+cedula+"'");
 			
 			while(rs.next())
 			{
@@ -112,7 +112,7 @@ public class Conexion_clientes {
 			int cant=0;
 			Statement stm= com.createStatement();
 			
-			ResultSet rs=stm.executeQuery("Select CEDULA from CLIENTES where CEDULA='"+c.getRif()+"'");
+			ResultSet rs=stm.executeQuery("Select CEDULA from clientes where CEDULA='"+c.getRif()+"'");
 			while(rs.next())
 			{
 				cant++;
@@ -122,7 +122,7 @@ public class Conexion_clientes {
 			if(c.getRif().equals(cedula)){
 			
 			
-			stm.executeUpdate("update CLIENTES SET CEDULA='"+c.getRif()+"', NOMBRE='"+c.getNombre()+"',  APELLIDO='"+c.getApellido()+"',DIRECCION='"+c.getDireccion()+"' WHERE CEDULA='"+cedula+"'");
+			stm.executeUpdate("update clientes SET CEDULA='"+c.getRif()+"', NOMBRE='"+c.getNombre()+"',  APELLIDO='"+c.getApellido()+"',DIRECCION='"+c.getDireccion()+"' WHERE CEDULA='"+cedula+"'");
 			new Mensaje().listo("El Usuario Fue Actualizado..","Actualizado");
 			stm.close();
 		}
@@ -131,7 +131,7 @@ public class Conexion_clientes {
 				if(cant>=1){new Mensaje().error("El Usuario ya Existe","Error");}
 				else
 				{
-					stm.executeUpdate("update CLIENTES SET CEDULA='"+c.getRif()+"', NOMBRE='"+c.getNombre()+"',  APELLIDO='"+c.getApellido()+"',DIRECCION='"+c.getDireccion()+"' WHERE CEDULA='"+cedula+"'");
+					stm.executeUpdate("update clientes SET CEDULA='"+c.getRif()+"', NOMBRE='"+c.getNombre()+"',  APELLIDO='"+c.getApellido()+"',DIRECCION='"+c.getDireccion()+"' WHERE CEDULA='"+cedula+"'");
 					new Mensaje().listo("El Usuario Fue Actualizado..","Actualizado");
 					stm.close();
 				}
@@ -152,14 +152,10 @@ public class Conexion_clientes {
 	{
 		try{
 		Statement stm= com.createStatement();
-		stm.executeUpdate("delete from CLIENTES where CEDULA='"+cedula+"'");
+		stm.executeUpdate("delete from clientes where CEDULA='"+cedula+"'");
 		}catch(Exception e)
 		{
 			new Mensaje().error("Error al Eliminar el Cliente", "");
-		}
-		
+		}	
 	}
-	
-	
-  
 }

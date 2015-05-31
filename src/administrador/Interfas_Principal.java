@@ -44,7 +44,7 @@ public class Interfas_Principal extends JFrame implements ActionListener,KeyList
 	/**
      Autor Anderson Guerrero
      C.I 24390246
-	 20 Anños de edad 
+	 20 AnÃ±os de edad 
 	 Ingenieria Informatica.
 	 * 
 	 * 
@@ -82,21 +82,21 @@ public class Interfas_Principal extends JFrame implements ActionListener,KeyList
 		config=facturacionb;
 		c=Conexion.conf;
 		user=Conexion.user;
-		setSize(getMaximumSize());
+		setSize(java.awt.Toolkit.getDefaultToolkit().getScreenSize().width,java.awt.Toolkit.getDefaultToolkit().getScreenSize().height);
 		
 		setResizable(false);
-	    icono_consultas=new ImageIcon("Images\\consultas.png");
-		fondo=new ImageIcon("Images\\fondo.jpg").getImage();
-		incono=new ImageIcon("Images\\logo.gif").getImage();
-		icono_clientes=new ImageIcon("Images\\clientes.png");
-		icono_cuentas=new ImageIcon("Images\\cuentas.png");
-		icono_config=new ImageIcon("Images\\configuracion.png");
-		icono_salir=new ImageIcon("Images\\salir.png");
-		icono_inventario=new ImageIcon("Images\\inventario.png");
-		icono_proveedores=new ImageIcon("Images\\proveedores.png");
-		icono_facturas=new ImageIcon("Images\\facturacion.jpg");
-		icono_select=new ImageIcon("Images\\select.png");
-		icono_herramientas=new ImageIcon("Images\\herramientas.png");
+	    icono_consultas=new ImageIcon("Images//consultas.png");
+		fondo=new ImageIcon("Images//fondo.jpg").getImage();
+		incono=new ImageIcon("Images//logo.gif").getImage();
+		icono_clientes=new ImageIcon("Images//clientes.png");
+		icono_cuentas=new ImageIcon("Images//cuentas.png");
+		icono_config=new ImageIcon("Images//configuracion.png");
+		icono_salir=new ImageIcon("Images//salir.png");
+		icono_inventario=new ImageIcon("Images//inventario.png");
+		icono_proveedores=new ImageIcon("Images//proveedores.png");
+		icono_facturas=new ImageIcon("Images//facturacion.jpg");
+		icono_select=new ImageIcon("Images//select.png");
+		icono_herramientas=new ImageIcon("Images//herramientas.png");
 		setIconImage(incono);
 		
 		panelt.setbacgroundimage(fondo);
@@ -144,7 +144,7 @@ public class Interfas_Principal extends JFrame implements ActionListener,KeyList
 		
 		//<-------------------------------------->Menu de Opciones de Consultas<--------------------------------->
 		
-		Listado_por_ubi=new JMenuItem("Listado por Ubicación ");
+		Listado_por_ubi=new JMenuItem("Listado por Ubicacion ");
 		Listado_por_ubi.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_U ,ActionEvent.CTRL_MASK));
 		Listado_por_ubi.setIcon(icono_select);
 		
@@ -360,21 +360,7 @@ public void keyPressed(KeyEvent x) {
 	}
 }
 
-
-
 @Override
-public void keyReleased(KeyEvent x) {
-	
-	
-}
-
-
-
-
-public void keyTyped(KeyEvent arg0) {
-	
-	
-}
-	
-	
+public void keyReleased(KeyEvent x) {}
+public void keyTyped(KeyEvent arg0) {}
 }

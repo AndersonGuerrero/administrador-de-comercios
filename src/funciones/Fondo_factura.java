@@ -26,14 +26,12 @@ public class Fondo_factura extends JPanel{
 		
     	setOpaque(false);
 	}
-	
-	
+
 	 protected void paintComponent(Graphics g) {
 	        Graphics2D g2 = (Graphics2D) g;
 	        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 	                RenderingHints.VALUE_ANTIALIAS_ON);
-	       
-	       
+
 	         Paint oldPaint = g2.getPaint();
 	          RoundRectangle2D.Float r2d = new RoundRectangle2D.Float(0,0,getWidth(),getHeight()-1,getArcw(),getArch());
 	            g2.clip(r2d);
@@ -77,10 +75,4 @@ public class Fondo_factura extends JPanel{
 	    public void setArch(int arch) {
 	        this.arch = arch;
 	    }
-	
-	
-	
-	
-	
-	
 }

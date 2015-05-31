@@ -11,6 +11,8 @@ import java.sql.Statement;
 import java.util.LinkedList;
 
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+
 import funciones.Cod_pw;
 import funciones.Dco_pw;
 import funciones.Mensaje;
@@ -26,8 +28,8 @@ public class Conexion {
 	public boolean conectar_access(){
 		try {
 			leerarchivo();
-			Class.forName("com.mysql.jdbc.Driver");
-		String strConect="jdbc:mysql://127.0.0.1/sistema";
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
+		String strConect="jdbc:mysql://127.0.0.1:3306/sistema";
 		conect = DriverManager.getConnection(strConect,username,passkey);
 		} catch (Exception ex) {
 		new  Mensaje().error("Error el Servidor no esta Disponible","Error al conectar a la base datos");
@@ -45,7 +47,7 @@ public class Conexion {
 		
 		try {
 			Statement stm= conect.createStatement();
-			ResultSet rs=stm.executeQuery("select CONTRASE�A from USUARIOS where USUARIO='"+user+"';");
+			ResultSet rs=stm.executeQuery("select PASSWORD from usuarios where USUARIO='"+user+"';");
 		
 			rs.next();
 			pass=rs.getString(1);
@@ -53,8 +55,6 @@ public class Conexion {
 		} catch (SQLException e) {
 			new Mensaje().error(" "+e, "Error");
 		}
-			
-			
 			if(pasword.equals(new Dco_pw().Decodificacionm(pass)))
 			{
 				return true;
@@ -71,7 +71,7 @@ public class Conexion {
 	{
 		try {
 			Statement stm= conect.createStatement();
-			ResultSet rs=stm.executeQuery("select USUARIO from USUARIOS;");
+			ResultSet rs=stm.executeQuery("select USUARIO from usuarios;");
 			
 		   JComboBox<String>lista =new JComboBox<>();
 		
@@ -101,7 +101,7 @@ public class Conexion {
  		try{
  			
  			Statement stm3= conect.createStatement();
-			ResultSet rs3=stm3.executeQuery("select *from USUARIOS");
+			ResultSet rs3=stm3.executeQuery("select *from usuarios");
  			
 			while(rs3.next())
 			{
@@ -124,7 +124,7 @@ public class Conexion {
  			
 			
 			Statement stm1= conect.createStatement();
-			ResultSet rs1=stm1.executeQuery("select *from CONFIGURACION");
+			ResultSet rs1=stm1.executeQuery("select *from configuracion");
 			
 			rs1.next();
 			conf.setRif(rs1.getString(2));
@@ -141,7 +141,7 @@ public class Conexion {
  				
  				
 			Statement stm= conect.createStatement();
-			ResultSet rs=stm.executeQuery("select *from USUARIOS where USUARIO='"+usuario+"'");
+			ResultSet rs=stm.executeQuery("select *from usuarios where USUARIO='"+usuario+"'");
 			
 			rs.next();
 		   
@@ -183,11 +183,11 @@ public class Conexion {
  		
  		try {
 			Statement stm= conect.createStatement();
-			stm.executeUpdate("UPDATE USUARIOS SET USUARIO='"+vector[1].toUpperCase()+"',CONTRASE�A='"+new Cod_pw().Codificacionm(vector[2])+"',INVENTARIO="+vector[3]+
+			stm.executeUpdate("UPDATE usuarios SET USUARIO='"+vector[1].toUpperCase()+"',PASSWORD='"+new Cod_pw().Codificacionm(vector[2])+"',INVENTARIO="+vector[3]+
 					",FACTURAS="+vector[4]+
 					",FACTURACION="+vector[5]+
 					",CLIENTES="+vector[6]+
-					",CONFIGURACION="+vector[7]+
+					",configuracion="+vector[7]+
 					",PROVEEDORES="+vector[8]+
 					" where USUARIO='"+nombre_ante+"'");
 			
@@ -201,7 +201,7 @@ public class Conexion {
  	{	
  		try {
 			Statement stm= conect.createStatement();
-			stm.executeUpdate("UPDATE CONFIGURACION SET RIF='"+rif+"',EMPRESA='"+nombre+"',IVA='"+iva+"',CORREO='"+correo+"',TELEFONO='"+telefono+"',TELEFONO2='"+telefono2+"',TELEFONO3='"+telefono3+"',DIRECCION='"+direccion+"' where ID='01'");
+			stm.executeUpdate("UPDATE configuracion SET RIF='"+rif+"',EMPRESA='"+nombre+"',IVA='"+iva+"',CORREO='"+correo+"',TELEFONO='"+telefono+"',TELEFONO2='"+telefono2+"',TELEFONO3='"+telefono3+"',DIRECCION='"+direccion+"' where ID='01'");
 			
               new Mensaje().listo("Actualizados y Guardados los Cambios", "Guardar");
 		} catch (SQLException e) {
@@ -218,7 +218,7 @@ public class Conexion {
  			
  			if(conect!=null){
  				Statement stm= conect.createStatement();
-			stm.executeUpdate("INSERT INTO USUARIOS VALUES('"+vector[1].toUpperCase()+"','"+new Cod_pw().Codificacionm(vector[2])+"',"+vector[3]+","+vector[4]+","+vector[5]+","+vector[6]+","+vector[7]+","+vector[8]+")");
+			stm.executeUpdate("INSERT INTO usuarios VALUES('"+vector[1].toUpperCase()+"','"+new Cod_pw().Codificacionm(vector[2])+"',"+vector[3]+","+vector[4]+","+vector[5]+","+vector[6]+","+vector[7]+","+vector[8]+")");
  			}
  			} catch (SQLException e) {new Mensaje().error("Error al Guardar el usuario", "Error");}
  		
@@ -230,7 +230,7 @@ public class Conexion {
  	{
  		try {
 			Statement stm= conect.createStatement();
-			stm.executeUpdate("delete from USUARIOS where USUARIO='"+user+"'");
+			stm.executeUpdate("delete from usuarios where USUARIO='"+user+"'");
 		} catch (SQLException e) {new Mensaje().error("Error al Guardar el usuario", "Error");}
  	}
  

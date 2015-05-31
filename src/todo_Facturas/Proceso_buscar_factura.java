@@ -31,7 +31,7 @@ public class Proceso_buscar_factura extends Thread {
 				Statement stm= cone.createStatement();
 				Statement stm2= cone.createStatement();
 				//Statement stm3= cone.createStatement();
-				ResultSet rs1=stm.executeQuery("select count(1) from FACTURACION where COD_FAC like '%"+texto+"%' or CLIENTE LIKE '%"+texto+"%' or FECHA LIKE '%"+texto+"%' or HORA LIKE '%"+texto+"%' or USUARIO like'%"+texto+"%'");
+				ResultSet rs1=stm.executeQuery("select count(1) from facturacion where COD_FAC like '%"+texto+"%' or CLIENTE LIKE '%"+texto+"%' or FECHA LIKE '%"+texto+"%' or HORA LIKE '%"+texto+"%' or USUARIO like'%"+texto+"%'");
 				
 				rs1.next();
 				int result=rs1.getInt(1);
@@ -42,7 +42,7 @@ public class Proceso_buscar_factura extends Thread {
 				Buscar_facturas.barra_progreso.setMaximum(result*2);
 				if(result>=1)
 				{
-					ResultSet rs=stm.executeQuery("select  *from FACTURACION where COD_FAC like '%"+texto+"%' or CLIENTE LIKE '%"+texto+"%' or FECHA LIKE '%"+texto+"%' or HORA LIKE '%"+texto+"%' or USUARIO like'%"+texto+"%'");
+					ResultSet rs=stm.executeQuery("select  *from facturacion where COD_FAC like '%"+texto+"%' or CLIENTE LIKE '%"+texto+"%' or FECHA LIKE '%"+texto+"%' or HORA LIKE '%"+texto+"%' or USUARIO like'%"+texto+"%'");
 					
 					while(rs.next())
 					{
@@ -56,7 +56,7 @@ public class Proceso_buscar_factura extends Thread {
 						f.setEstado(rs.getString(7));
 						
 				
-						ResultSet rs3=stm2.executeQuery("select  *from TIPO_PAGO where COD_FACT='"+f.getCodigo()+"'");
+						ResultSet rs3=stm2.executeQuery("select  *from tipo_pago where COD_FACT='"+f.getCodigo()+"'");
 						
 						while(rs3.next())
 						{
@@ -66,7 +66,7 @@ public class Proceso_buscar_factura extends Thread {
 							f.setTipo_pago(xvector);
 						}
 						
-						ResultSet rs2=stm2.executeQuery("select  *from FAC_PROD where COD_FACT='"+f.getCodigo()+"'");
+						ResultSet rs2=stm2.executeQuery("select  *from fac_prod where COD_FACT='"+f.getCodigo()+"'");
 				
 						while(rs2.next())
 						{

@@ -51,7 +51,7 @@ public class Imprimir_x_factura extends Thread {
 		 Statement stm1= cenect.createStatement();
 		 Statement stm2= cenect.createStatement();
 		 
-			ResultSet rs=stm.executeQuery("select *from FACTURACION  where COD_FAC="+cod);
+			ResultSet rs=stm.executeQuery("select *from facturacion  where COD_FAC="+cod);
 		
 		rs.next();
 
@@ -65,7 +65,7 @@ public class Imprimir_x_factura extends Thread {
 		f.setIva(rs.getString(5));
 		f.setUsuario(rs.getString(6));
 		
-		ResultSet rs1=stm1.executeQuery("select *from FAC_PROD  where COD_FACT='"+cod+"'");
+		ResultSet rs1=stm1.executeQuery("select *from fac_prod  where COD_FACT='"+cod+"'");
 		
 		while(rs1.next())
 		{
@@ -95,7 +95,7 @@ public class Imprimir_x_factura extends Thread {
 	
 	    total=iva.add(subtotal);
 				
-		ResultSet rs2=stm2.executeQuery("select *from TIPO_PAGO  where COD_FACT='"+cod+"'");
+		ResultSet rs2=stm2.executeQuery("select *from tipo_pago  where COD_FACT='"+cod+"'");
 		
 		while(rs2.next())
 		{
@@ -125,7 +125,7 @@ public class Imprimir_x_factura extends Thread {
 		cenect=Conexion.conect;
 		Statement stm11= cenect.createStatement();
 		
-		ResultSet rs11=stm11.executeQuery("select NOMBRE,DIRECCION from CLIENTES where CEDULA='"+f.getCliente()+"'");
+		ResultSet rs11=stm11.executeQuery("select NOMBRE,DIRECCION from clientes where CEDULA='"+f.getCliente()+"'");
 		rs11.next();
 		cli=new Cliente();
 		cli.setDireccion(rs11.getString(2));
@@ -138,7 +138,7 @@ public class Imprimir_x_factura extends Thread {
      
      
 	@SuppressWarnings("deprecation")
-	JasperReport reporte = (JasperReport) JRLoader.loadObject("Plantillas\\Factura.jasper");  
+	JasperReport reporte = (JasperReport) JRLoader.loadObject("Plantillas//Factura.jasper");  
 	
     Map<String, Object> parametros=new HashMap<String,Object>();
     parametros.put("nombre_cliente",cli.getNombre());
@@ -184,11 +184,11 @@ public class Imprimir_x_factura extends Thread {
 
      JRExporter exporter = new JRPdfExporter();  
      exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint); 
-     exporter.setParameter(JRExporterParameter.OUTPUT_FILE, new java.io.File("Reportes\\Factura_x.pdf")); 
+     exporter.setParameter(JRExporterParameter.OUTPUT_FILE, new java.io.File("Reportes//Factura_x.pdf")); 
      exporter.exportReport(); 
  
      
-		File archivo=new File("Reportes\\Factura_x.pdf");
+		File archivo=new File("Reportes//Factura_x.pdf");
 		
 		
 		

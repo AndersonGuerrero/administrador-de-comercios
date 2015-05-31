@@ -22,9 +22,9 @@
 	<classpathentry kind="lib" path="Jars/jasperreports-applet-5.0.1.jar"/>
 	<classpathentry kind="lib" path="Jars/jasperreports-fonts-5.0.1.jar"/>
 	<classpathentry kind="lib" path="Jars/jasperreports-javaflow-5.0.1.jar"/>
-	<classpathentry kind="lib" path="Jars/mysql-connector-java-5.1.22-bin.jar"/>
 	<classpathentry kind="lib" path="Jars/png-encoder-1.5.jar"/>
 	<classpathentry kind="lib" path="Jars/poi-3.7-20101029.jar"/>
 	<classpathentry kind="lib" path="Jars/substance.jar"/>
+	<classpathentry kind="lib" path="Jars/mysql-connector-java-5.1.23-bin.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

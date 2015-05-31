@@ -28,7 +28,7 @@ public class Mensaje extends JDialog implements ActionListener,KeyListener {
 	public static boolean resp_inpout;
 	public void error(String msj,String titulo)
 	{
-		icon1=new ImageIcon("Images\\error.png");
+		icon1=new ImageIcon("Images//error.png");
 		icon=new JLabel();
 		icon.setIcon(icon1);
 		icon.setBounds(10,10,50,50);
@@ -36,13 +36,10 @@ public class Mensaje extends JDialog implements ActionListener,KeyListener {
 		aceptar=new JButton("Aceptar");
 		aceptar.setFont(new Font(null, 1, 12));
 		new Pintar_boton(aceptar);
-		aceptar.setBounds(200,80,100,30);
+		aceptar.setBounds(150,60,100,30);
 		
 		new Enfocar(aceptar);
-		 
-		
 		setSize(300+(msj.length()*4),150);
-		
 		mensaje=new JLabel(msj);
 		mensaje.setFont(new Font(null, 1, 12));
 		new Pintar_label(mensaje);
@@ -57,7 +54,7 @@ public class Mensaje extends JDialog implements ActionListener,KeyListener {
 		add(mensaje);
 		add(aceptar);
 		add(icon);
-		add(new Fondo(getWidth(),150));
+		add(new Fondo(getWidth()+4,getHeight()-12));
 		aceptar.addActionListener(this);
 		aceptar.addKeyListener(this);
 		setDefaultCloseOperation(0);
@@ -67,7 +64,7 @@ public class Mensaje extends JDialog implements ActionListener,KeyListener {
 	
 	public void listo(String msj,String titulo)
 	{
-		icon1=new ImageIcon("Images\\ok.png");
+		icon1=new ImageIcon("Images//ok.png");
 		icon=new JLabel();
 		icon.setIcon(icon1);
 		icon.setBounds(10,10,50,50);
@@ -103,7 +100,7 @@ public class Mensaje extends JDialog implements ActionListener,KeyListener {
 	public void pregunta(String msj,String titulo)
 	{
 		
-		icon1=new ImageIcon("Images\\pregunta.png");
+		icon1=new ImageIcon("Images//pregunta.png");
 		icon=new JLabel();
 		icon.setIcon(icon1);
 		icon.setBounds(10,10,50,50);
@@ -149,7 +146,7 @@ public class Mensaje extends JDialog implements ActionListener,KeyListener {
 	
 	public void inpout(String msj,String titulo,String tipo)
 	{
-		icon1=new ImageIcon("Images\\pregunta.png");
+		icon1=new ImageIcon("Images//pregunta.png");
 		icon=new JLabel();
 		icon.setIcon(icon1);
 		icon.setBounds(10,10,50,50);
@@ -201,9 +198,7 @@ public class Mensaje extends JDialog implements ActionListener,KeyListener {
 	}
 	
 	
-	public void actionPerformed(ActionEvent e) {
-	
-	
+public void actionPerformed(ActionEvent e) {
 		if(e.getSource().equals(si))
 		{
 		resp=true;
@@ -299,21 +294,11 @@ public class Mensaje extends JDialog implements ActionListener,KeyListener {
 			       dato="";
 					dispose();}
 				}
-		
 	}
 
+	public void keyReleased(KeyEvent arg0) {}
 
-
-	public void keyReleased(KeyEvent arg0) {
-	
-		
-	}
-
-
-	
 	public void keyTyped(KeyEvent arg0) {
-	
-		
 		if(arg0.getSource().equals(dato_txt))
 		{
 			char x= arg0.getKeyChar();
@@ -334,13 +319,6 @@ public class Mensaje extends JDialog implements ActionListener,KeyListener {
 				{
 					arg0.consume();
 				}}
-			
-			
-			
 		}
-		
 	}
-	
-	
-	
 }

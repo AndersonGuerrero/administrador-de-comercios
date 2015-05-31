@@ -10,5 +10,4 @@ public class Pintar_txt {
 	{
 		txt.setFont(new Font(null, 1, 12));
 	}
-	
 }
