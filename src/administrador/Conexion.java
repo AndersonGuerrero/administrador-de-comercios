@@ -24,16 +24,14 @@ public class Conexion {
 	public static Connection conect;
 	
 	public boolean conectar_access(){
-		
-		
-		
 		try {
 			leerarchivo();
 			Class.forName("com.mysql.jdbc.Driver");
-		String strConect="jdbc:mysql://localhost/sistema";
+		String strConect="jdbc:mysql://127.0.0.1/sistema";
 		conect = DriverManager.getConnection(strConect,username,passkey);
 		} catch (Exception ex) {
 		new  Mensaje().error("Error el Servidor no esta Disponible","Error al conectar a la base datos");
+		System.out.print(ex);
 	    return false;
 	  	}
 		return true;
@@ -47,7 +45,7 @@ public class Conexion {
 		
 		try {
 			Statement stm= conect.createStatement();
-			ResultSet rs=stm.executeQuery("select CONTRASEÑA from USUARIOS where USUARIO='"+user+"';");
+			ResultSet rs=stm.executeQuery("select CONTRASEï¿½A from USUARIOS where USUARIO='"+user+"';");
 		
 			rs.next();
 			pass=rs.getString(1);
@@ -185,7 +183,7 @@ public class Conexion {
  		
  		try {
 			Statement stm= conect.createStatement();
-			stm.executeUpdate("UPDATE USUARIOS SET USUARIO='"+vector[1].toUpperCase()+"',CONTRASEÑA='"+new Cod_pw().Codificacionm(vector[2])+"',INVENTARIO="+vector[3]+
+			stm.executeUpdate("UPDATE USUARIOS SET USUARIO='"+vector[1].toUpperCase()+"',CONTRASEï¿½A='"+new Cod_pw().Codificacionm(vector[2])+"',INVENTARIO="+vector[3]+
 					",FACTURAS="+vector[4]+
 					",FACTURACION="+vector[5]+
 					",CLIENTES="+vector[6]+
