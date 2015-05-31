@@ -27,23 +27,23 @@ public class Ganacias_Inversiones implements ActionListener,KeyListener{
 	
 	//---------------------------------
 	Fondo ganancias_del_dia;
-    JTextField dia,mes,año;
-    JLabel dial,mesl,añol,totall;
+    JTextField dia,mes,ano;
+    JLabel dial,mesl,anol,totall;
     String totalString="0.00";
     JButton buscar_dia;
     //--------------------------------
     Fondo ganancias_del_mes;
-    JTextField mes_mes,mes_año;
-    JLabel mes_mesl,mes_añol,mes_totall;
+    JTextField mes_mes,mes_ano;
+    JLabel mes_mesl,mes_anol,mes_totall;
     String mes_totalString="0.00";
     JButton mes_buscar;
     //----------------------------------
     
-    Fondo ganancias_del_año;
-    JTextField año_año;
-    JLabel año_añol,año_totall;
-    String año_totalString="0.00";
-    JButton año_buscar;
+    Fondo ganancias_del_ano;
+    JTextField ano_ano;
+    JLabel ano_anol,ano_totall;
+    String ano_totalString="0.00";
+    JButton ano_buscar;
     //------------------------------------------
     
     Fondo ganancias_e_Inverciones_del_inventario;
@@ -84,19 +84,19 @@ public class Ganacias_Inversiones implements ActionListener,KeyListener{
 		new Pintar_txt(mes);
 		mes.setBounds(110,30,30,30);
 		ganancias_del_dia.add(mes);
-		añol=new JLabel("Año");
-		new Pintar_label(añol);
-		añol.setBounds(150,30,50,30);
-		ganancias_del_dia.add(añol);
+		anol=new JLabel("Ano");
+		new Pintar_label(anol);
+		anol.setBounds(150,30,50,30);
+		ganancias_del_dia.add(anol);
 	    totall=new JLabel("BsF "+totalString);
         new Pintar_label(totall);
         totall.setFont(new Font(null,1,16));
         totall.setBounds(400,35,200,20);
         ganancias_del_dia.add(totall);
-		año=new JTextField();
-		new Pintar_txt(año);
-		año.setBounds(180,30,40,30);
-		ganancias_del_dia.add(año);
+		ano=new JTextField();
+		new Pintar_txt(ano);
+		ano.setBounds(180,30,40,30);
+		ganancias_del_dia.add(ano);
 		paneles.addTab("Ganancias del Dia",null,ganancias_del_dia,"Ganancias del Dia");
 		
 		
@@ -120,48 +120,48 @@ public class Ganacias_Inversiones implements ActionListener,KeyListener{
 			new Pintar_txt(mes_mes);
 			mes_mes.setBounds(110,30,30,30);
 			ganancias_del_mes.add(mes_mes);
-			mes_añol=new JLabel("Año");
-			new Pintar_label(mes_añol);
-			mes_añol.setBounds(150,30,50,30);
-			ganancias_del_mes.add(mes_añol);
+			mes_anol=new JLabel("Ano");
+			new Pintar_label(mes_anol);
+			mes_anol.setBounds(150,30,50,30);
+			ganancias_del_mes.add(mes_anol);
 			mes_totall=new JLabel("BsF "+mes_totalString);
 	        new Pintar_label(mes_totall);
 	        mes_totall.setFont(new Font(null,1,16));
 	        mes_totall.setBounds(400,35,200,20);
 	        ganancias_del_mes.add(mes_totall);
-	        mes_año=new JTextField();
-			new Pintar_txt(mes_año);
-			mes_año.setBounds(180,30,40,30);
-			ganancias_del_mes.add(mes_año);
+	        mes_ano=new JTextField();
+			new Pintar_txt(mes_ano);
+			mes_ano.setBounds(180,30,40,30);
+			ganancias_del_mes.add(mes_ano);
 			paneles.addTab("Ganancias del Mes",null,ganancias_del_mes,"Ganancias del Mes");
 		//----------------------------------------------------------------------------------------------------------------------------------
 		
-			//-----------------------------------ganancias Año-----------------------------------------------------------------------------------------------------------
+			//-----------------------------------ganancias Ano-----------------------------------------------------------------------------------------------------------
 			
-		    ganancias_del_año=new Fondo(0,0);
-		    ganancias_del_año.setLayout(null);
-		    ganancias_del_año.setBounds(10,30,400,150);
-		    año_buscar=new JButton("Buscar");
-		    año_buscar.setBounds(250, 30, 100,30);
-			new Pintar_boton(año_buscar);
-			ganancias_del_año.add(año_buscar);
+		    ganancias_del_ano=new Fondo(0,0);
+		    ganancias_del_ano.setLayout(null);
+		    ganancias_del_ano.setBounds(10,30,400,150);
+		    ano_buscar=new JButton("Buscar");
+		    ano_buscar.setBounds(250, 30, 100,30);
+			new Pintar_boton(ano_buscar);
+			ganancias_del_ano.add(ano_buscar);
 				
-			año_añol=new JLabel("Año");
-			new Pintar_label(mes_añol);
-			año_añol.setBounds(150,30,50,30);
-			ganancias_del_año.add(mes_añol);
+			ano_anol=new JLabel("Ano");
+			new Pintar_label(mes_anol);
+			ano_anol.setBounds(150,30,50,30);
+			ganancias_del_ano.add(mes_anol);
 			
 			
-			año_totall=new JLabel("BsF "+año_totalString);
-	        new Pintar_label(año_totall);
-	        año_totall.setFont(new Font(null,1,16));
-	        año_totall.setBounds(400,35,200,20);
-	        ganancias_del_año.add(año_totall);
-	        año_año=new JTextField();
-			new Pintar_txt(año_año);
-			año_año.setBounds(180,30,40,30);
-			ganancias_del_año.add(año_año);
-			paneles.addTab("Ganancias del Año",null,ganancias_del_año,"Ganancias del Año");
+			ano_totall=new JLabel("BsF "+ano_totalString);
+	        new Pintar_label(ano_totall);
+	        ano_totall.setFont(new Font(null,1,16));
+	        ano_totall.setBounds(400,35,200,20);
+	        ganancias_del_ano.add(ano_totall);
+	        ano_ano=new JTextField();
+			new Pintar_txt(ano_ano);
+			ano_ano.setBounds(180,30,40,30);
+			ganancias_del_ano.add(ano_ano);
+			paneles.addTab("Ganancias del Ano",null,ganancias_del_ano,"Ganancias del Ano");
 		//----------------------------------------------------------------------------------------------------------------------------------
 		
 			
@@ -202,8 +202,8 @@ public class Ganacias_Inversiones implements ActionListener,KeyListener{
 			
 		d.add(paneles);
 		buscar_dia.addActionListener(this);
-		año_buscar.addActionListener(this);
-		año_buscar.addKeyListener(this);
+		ano_buscar.addActionListener(this);
+		ano_buscar.addKeyListener(this);
 		buscar_dia.addKeyListener(this);
 		mes_buscar.addActionListener(this);
 		mes_buscar.addKeyListener(this);
@@ -211,10 +211,10 @@ public class Ganacias_Inversiones implements ActionListener,KeyListener{
 		actualizar.addKeyListener(this);
 		dia.addKeyListener(this);
 		mes.addKeyListener(this);
-		año.addKeyListener(this);
-		año_año.addKeyListener(this);
+		ano.addKeyListener(this);
+		ano_ano.addKeyListener(this);
 		mes_mes.addKeyListener(this);
-		mes_año.addKeyListener(this);
+		mes_ano.addKeyListener(this);
 		new Enfocar(dia);
 		d.setVisible(true);
 		
@@ -229,33 +229,33 @@ public class Ganacias_Inversiones implements ActionListener,KeyListener{
 		else
 			if(g.getSource().equals(mes))
 			{
-			if(g.getKeyCode()==Event.ENTER){new Enfocar(año);}
+			if(g.getKeyCode()==Event.ENTER){new Enfocar(ano);}
 			}
 			else
-				if(g.getSource().equals(año))
+				if(g.getSource().equals(ano))
 				{
 				if(g.getKeyCode()==Event.ENTER){new Enfocar(buscar_dia);}
 				}
 				else
 					if(g.getSource().equals(mes_mes))
 					{
-					if(g.getKeyCode()==Event.ENTER){new Enfocar(mes_año);}
+					if(g.getKeyCode()==Event.ENTER){new Enfocar(mes_ano);}
 					}
 					else
-						if(g.getSource().equals(mes_año))
+						if(g.getSource().equals(mes_ano))
 						{
 						if(g.getKeyCode()==Event.ENTER){new Enfocar(mes_buscar);}
 						}
 						else
-							if(g.getSource().equals(año_año))
+							if(g.getSource().equals(ano_ano))
 							{
-							if(g.getKeyCode()==Event.ENTER){new Enfocar(año_buscar);}
+							if(g.getKeyCode()==Event.ENTER){new Enfocar(ano_buscar);}
 							}
 							else
 		if(g.getSource().equals(mes_buscar))
 		{
 		if(g.getKeyCode()==Event.ENTER){BigDecimal total_dia=new BigDecimal("0");
-		   String fecha="/"+mes_mes.getText()+"/"+mes_año.getText();
+		   String fecha="/"+mes_mes.getText()+"/"+mes_ano.getText();
 		    total_dia=new Buscador().Buscar_mes(fecha);
 		    mes_totall.setText("BsF "+total_dia);}
 		}
@@ -265,20 +265,20 @@ public class Ganacias_Inversiones implements ActionListener,KeyListener{
 			if(g.getKeyCode()==Event.ENTER)
 			{
 				 BigDecimal total_dia=new BigDecimal("0");
-				   String fecha=dia.getText()+"/"+mes.getText()+"/"+año.getText();
+				   String fecha=dia.getText()+"/"+mes.getText()+"/"+ano.getText();
 				    total_dia=new Buscador().Buscar_dia(fecha);
 				   totall.setText("BsF "+total_dia);
 			}
 			}
 			else
-				if(g.getSource().equals(año_buscar))
+				if(g.getSource().equals(ano_buscar))
 				{
 				if(g.getKeyCode()==Event.ENTER)
 				{
 					BigDecimal total_dia=new BigDecimal("0");
-					   String fecha="/"+año_año.getText();
+					   String fecha="/"+ano_ano.getText();
 					    total_dia=new Buscador().Buscar_mes(fecha);
-					    año_totall.setText("BsF "+total_dia);
+					    ano_totall.setText("BsF "+total_dia);
 				}
 				}
 	}
@@ -290,9 +290,9 @@ public class Ganacias_Inversiones implements ActionListener,KeyListener{
 	@Override
 	public void keyTyped(KeyEvent g) {
 		
-		if(g.getSource().equals(año_año))
+		if(g.getSource().equals(ano_ano))
 		{
-			if(año_año.getText().length()==4){g.consume();}
+			if(ano_ano.getText().length()==4){g.consume();}
 			else{
 			char x=g.getKeyChar();
 			if(x<'0' || x>'9'){g.consume();}
@@ -327,19 +327,19 @@ public class Ganacias_Inversiones implements ActionListener,KeyListener{
 			}	
 		}
 		else
-			if(g.getSource().equals(mes_año))
+			if(g.getSource().equals(mes_ano))
 			{
-				if(mes_año.getText().length()==4){g.consume();}
+				if(mes_ano.getText().length()==4){g.consume();}
 				else{
 					char x=g.getKeyChar();
 					if(x<'0' || x>'9'){g.consume();}
 					}	
 			}
 			else
-		if(g.getSource().equals(año))
+		if(g.getSource().equals(ano))
 		{
 			
-			if(año.getText().length()==4){g.consume();}
+			if(ano.getText().length()==4){g.consume();}
 			else{
 			char x=g.getKeyChar();
 			if(x<'0' || x>'9'){g.consume();}
@@ -373,7 +373,7 @@ public class Ganacias_Inversiones implements ActionListener,KeyListener{
 	   if(a.getSource().equals(buscar_dia))
 		{
 		   BigDecimal total_dia=new BigDecimal("0");
-		   String fecha=dia.getText()+"/"+mes.getText()+"/"+año.getText();
+		   String fecha=dia.getText()+"/"+mes.getText()+"/"+ano.getText();
 		    total_dia=new Buscador().Buscar_dia(fecha);
 		   totall.setText("BsF "+total_dia);
 		    
@@ -382,18 +382,18 @@ public class Ganacias_Inversiones implements ActionListener,KeyListener{
 		   if(a.getSource().equals(mes_buscar))
 			{
 			   BigDecimal total_dia=new BigDecimal("0");
-			   String fecha="/"+mes_mes.getText()+"/"+mes_año.getText();
+			   String fecha="/"+mes_mes.getText()+"/"+mes_ano.getText();
 			    total_dia=new Buscador().Buscar_mes(fecha);
 			    mes_totall.setText("BsF "+total_dia);
 			    
 			}
 		   else
-	   if(a.getSource().equals(año_buscar))
+	   if(a.getSource().equals(ano_buscar))
 		{
 		   BigDecimal total_dia=new BigDecimal("0");
-		   String fecha="/"+año_año.getText();
+		   String fecha="/"+ano_ano.getText();
 		    total_dia=new Buscador().Buscar_mes(fecha);
-		    año_totall.setText("BsF "+total_dia);
+		    ano_totall.setText("BsF "+total_dia);
 		}
 		
 	}

@@ -2,28 +2,29 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
-	<classpathentry kind="lib" path="C:/Users/ANDERSON/Documents/proyectos java/Administrador de Comercios/Jars/itextpdf-5.1.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ANDERSON/Documents/proyectos java/Administrador de Comercios/Jars/itextpdf-5.1.1-javadoc.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ANDERSON/Documents/proyectos java/Administrador de Comercios/Jars/itextpdf-5.1.1-sources.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ANDERSON/Documents/proyectos java/Administrador de Comercios/Jars/itext-xtra-5.1.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ANDERSON/Documents/proyectos java/Administrador de Comercios/Jars/itext-xtra-5.1.1-javadoc.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ANDERSON/Documents/proyectos java/Administrador de Comercios/Jars/itext-xtra-5.1.1-sources.jar"/>
-	<classpathentry kind="lib" path="C:/wamp/bin/mysql/mysql5.5.24/mysql-connector-java-5.1.22-bin.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ANDERSON/Downloads/Programas en JAVA/generador de reportes jar/commons-beanutils-1.8.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ANDERSON/Downloads/Programas en JAVA/generador de reportes jar/commons-collections-2.1.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ANDERSON/Downloads/Programas en JAVA/generador de reportes jar/commons-digester-2.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ANDERSON/Downloads/Programas en JAVA/generador de reportes jar/commons-javaflow-20060411.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ANDERSON/Downloads/Programas en JAVA/generador de reportes jar/commons-logging-1.1.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ANDERSON/Downloads/Programas en JAVA/generador de reportes jar/groovy-all-2.0.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ANDERSON/Downloads/Programas en JAVA/generador de reportes jar/iText-2.1.7.js1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ANDERSON/Downloads/Programas en JAVA/generador de reportes jar/jasperreports-5.0.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ANDERSON/Downloads/Programas en JAVA/generador de reportes jar/jasperreports-applet-5.0.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ANDERSON/Downloads/Programas en JAVA/generador de reportes jar/jasperreports-fonts-5.0.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ANDERSON/Downloads/Programas en JAVA/generador de reportes jar/jasperreports-javaflow-5.0.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ANDERSON/Downloads/Programas en JAVA/generador de reportes jar/png-encoder-1.5.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ANDERSON/Downloads/Programas en JAVA/generador de reportes jar/poi-3.7-20101029.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ANDERSON/Documents/proyectos java/Administrador de Comercios/Jars/substance.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ANDERSON/Documents/proyectos java/Administrador de Comercios/Jars/DateChooser.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ANDERSON/Documents/proyectos java/Administrador de Comercios/Jars/DateChooserDemo.jar"/>
+	<classpathentry kind="lib" path="Jars/balloontip-1.2.1.jar"/>
+	<classpathentry kind="lib" path="Jars/commons-beanutils-1.8.0.jar"/>
+	<classpathentry kind="lib" path="Jars/commons-collections-2.1.1.jar"/>
+	<classpathentry kind="lib" path="Jars/commons-digester-2.1.jar"/>
+	<classpathentry kind="lib" path="Jars/commons-javaflow-20060411.jar"/>
+	<classpathentry kind="lib" path="Jars/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="Jars/DateChooser.jar"/>
+	<classpathentry kind="lib" path="Jars/DateChooserDemo.jar"/>
+	<classpathentry kind="lib" path="Jars/groovy-all-2.0.1.jar"/>
+	<classpathentry kind="lib" path="Jars/iText-2.1.7.js1.jar"/>
+	<classpathentry kind="lib" path="Jars/itext-xtra-5.1.1-javadoc.jar"/>
+	<classpathentry kind="lib" path="Jars/itext-xtra-5.1.1-sources.jar"/>
+	<classpathentry kind="lib" path="Jars/itext-xtra-5.1.1.jar"/>
+	<classpathentry kind="lib" path="Jars/itextpdf-5.1.1-javadoc.jar"/>
+	<classpathentry kind="lib" path="Jars/itextpdf-5.1.1-sources.jar"/>
+	<classpathentry kind="lib" path="Jars/itextpdf-5.1.1.jar"/>
+	<classpathentry kind="lib" path="Jars/jasperreports-5.0.1.jar"/>
+	<classpathentry kind="lib" path="Jars/jasperreports-applet-5.0.1.jar"/>
+	<classpathentry kind="lib" path="Jars/jasperreports-fonts-5.0.1.jar"/>
+	<classpathentry kind="lib" path="Jars/jasperreports-javaflow-5.0.1.jar"/>
+	<classpathentry kind="lib" path="Jars/mysql-connector-java-5.1.22-bin.jar"/>
+	<classpathentry kind="lib" path="Jars/png-encoder-1.5.jar"/>
+	<classpathentry kind="lib" path="Jars/poi-3.7-20101029.jar"/>
+	<classpathentry kind="lib" path="Jars/substance.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
