@@ -30,7 +30,7 @@ public class Procesos_recepciones extends Thread {
 			int x2=0;
 			Statement stm=conex.createStatement();
 			
-			ResultSet rs=stm.executeQuery("Select count(1) from RECEPCIONES where COD_RECEP LIKE'%"+txt+"%' or COD_PRO LIKE'%"+txt+"%' or COD_PROD LIKE'%"+txt+"%' or FECHA LIKE'%"+txt+"%' or HORA LIKE'%"+txt+"%'");
+			ResultSet rs=stm.executeQuery("Select count(1) from recepciones where COD_RECEP LIKE'%"+txt+"%' or COD_PRO LIKE'%"+txt+"%' or COD_PROD LIKE'%"+txt+"%' or FECHA LIKE'%"+txt+"%' or HORA LIKE'%"+txt+"%'");
 			
 		        rs.next();
 		        
@@ -44,7 +44,7 @@ public class Procesos_recepciones extends Thread {
 			{
 				LinkedList<Recepciones> lista= new LinkedList<>();
 				
-				ResultSet rs2=stm.executeQuery("Select *from RECEPCIONES where COD_RECEP LIKE'%"+txt+"%' or COD_PRO LIKE'%"+txt+"%' or COD_PROD LIKE'%"+txt+"%' or FECHA LIKE'%"+txt+"%' or HORA LIKE'%"+txt+"%'");
+				ResultSet rs2=stm.executeQuery("Select *from recepciones where COD_RECEP LIKE'%"+txt+"%' or COD_PRO LIKE'%"+txt+"%' or COD_PROD LIKE'%"+txt+"%' or FECHA LIKE'%"+txt+"%' or HORA LIKE'%"+txt+"%'");
 				
 				while(rs2.next())
 				{

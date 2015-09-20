@@ -10,9 +10,15 @@ public class Inicio {
 	public static Usuarios users;
 	
 	public static Confing c;
+	public static  String url_sistema = "";
 	static boolean inventario,facturacion,clientes,facturas,proveedores,configuracion;
-    public static void main(String[] args) {  
-    	
+    public static void main(String[] args) { 
+    	String sSistemaOperativo = System.getProperty("os.name");
+	    if(sSistemaOperativo.equals("Linux")){
+	    	url_sistema = "//";
+	    }else{
+	    	url_sistema = "\\";
+	    }
     	decorar(); 
     	c=Conexion.conf;
 		users=Conexion.user;

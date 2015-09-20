@@ -29,7 +29,7 @@ public class Conexion {
 		try {
 			leerarchivo();
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
-		String strConect="jdbc:mysql://127.0.0.1:3306/sistema";
+		String strConect="jdbc:mysql://localhost:3306/sistema";
 		conect = DriverManager.getConnection(strConect,username,passkey);
 		} catch (Exception ex) {
 		new  Mensaje().error("Error el Servidor no esta Disponible","Error al conectar a la base datos");
@@ -185,10 +185,10 @@ public class Conexion {
 			Statement stm= conect.createStatement();
 			stm.executeUpdate("UPDATE usuarios SET USUARIO='"+vector[1].toUpperCase()+"',PASSWORD='"+new Cod_pw().Codificacionm(vector[2])+"',INVENTARIO="+vector[3]+
 					",FACTURAS="+vector[4]+
-					",FACTURACION="+vector[5]+
-					",CLIENTES="+vector[6]+
+					",facturacion="+vector[5]+
+					",clientes="+vector[6]+
 					",configuracion="+vector[7]+
-					",PROVEEDORES="+vector[8]+
+					",proveedores="+vector[8]+
 					" where USUARIO='"+nombre_ante+"'");
 			
 		} catch (SQLException e) {
@@ -246,7 +246,7 @@ public class Conexion {
  				if(temp!=null)
  				{
  					String[] dato=temp.split(":");
- 					passkey=dato[1];
+ 					try {passkey=dato[1];} catch (Exception e){passkey="";}
  				}else
  				{
  					new Mensaje().error("El Password de ususario no existe en el fichero", "Error");

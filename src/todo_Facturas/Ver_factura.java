@@ -247,7 +247,7 @@ public class Ver_factura implements ActionListener,MouseListener {
 			
 				cone=Conexion.conect;
 			    Statement stm= cone.createStatement();
-			    ResultSet rs= stm.executeQuery("select DESCRIPCION  from PRODUCTOS where CODIGO='"+f.get(posicion).getPro_fac(i)[0]+"'");
+			    ResultSet rs= stm.executeQuery("select DESCRIPCION  from productos where CODIGO='"+f.get(posicion).getPro_fac(i)[0]+"'");
 			    rs.next();
 			    vector[2]=rs.getString(1);
 			    

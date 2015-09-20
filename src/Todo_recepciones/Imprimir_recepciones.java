@@ -16,10 +16,9 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.export.JRPdfExporter;
 import net.sf.jasperreports.engine.util.JRLoader;
-
 import funciones.Mensaje;
-
 import administrador.Conexion;
+import administrador.Inicio;
 
 public class Imprimir_recepciones extends Thread {
 		
@@ -42,7 +41,7 @@ public class Imprimir_recepciones extends Thread {
 		
 		 Statement stm= cenect.createStatement();
 
-			ResultSet rs=stm.executeQuery("select *from RECEPCIONES where COD_RECEP="+cod);
+			ResultSet rs=stm.executeQuery("select *from recepciones where COD_RECEP="+cod);
 		
 		rs.next();
 
@@ -72,17 +71,17 @@ public class Imprimir_recepciones extends Thread {
       sourse.addParticipante(re,x);
 
       @SuppressWarnings("deprecation")
-	  JasperReport reporte = (JasperReport) JRLoader.loadObject("Plantillas\\Recepciones.jasper");  
+	  JasperReport reporte = (JasperReport) JRLoader.loadObject("Plantillas" + Inicio.url_sistema + "Recepciones.jasper");  
       JasperPrint jasperPrint = JasperFillManager.fillReport(reporte, null, sourse);  
 
       JRExporter exporter = new JRPdfExporter();  
       exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint); 
-      exporter.setParameter(JRExporterParameter.OUTPUT_FILE, new java.io.File("Reportes\\Recepcion.pdf")); 
+      exporter.setParameter(JRExporterParameter.OUTPUT_FILE, new java.io.File("Reportes" + Inicio.url_sistema + "Recepcion.pdf")); 
       exporter.exportReport(); 
   
       
       
-		File archivo=new File("Reportes\\Recepcion.pdf");
+		File archivo=new File("Reportes" + Inicio.url_sistema + "Recepcion.pdf");
 		Desktop.getDesktop().open(archivo);
 		
 		Buscar_recepciones.imprimir.setEnabled(true);

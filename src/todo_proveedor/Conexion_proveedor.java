@@ -23,7 +23,7 @@ public class Conexion_proveedor {
 	{
 		 try {
 			   Statement stm= Conex.createStatement();
-				ResultSet rs=stm.executeQuery("select CODIGO from PROVEEDORES order by CODIGO desc;");
+				ResultSet rs=stm.executeQuery("select CODIGO from proveedores order by CODIGO desc;");
 				
 				while(rs.next())
 				{
@@ -44,7 +44,7 @@ public class Conexion_proveedor {
 		 try {
 			 Statement stm= Conex.createStatement();
 				Statement stm2= Conex.createStatement();
-				ResultSet rs=stm.executeQuery("select CODIGO from PROVEEDORES where CODIGO='"+pro.getId()+"';");
+				ResultSet rs=stm.executeQuery("select CODIGO from proveedores where CODIGO='"+pro.getId()+"';");
 				rs.next();
 			if(rs.getRow()>=1)
 			{
@@ -56,9 +56,9 @@ public class Conexion_proveedor {
 			}
 			else
 			{
-			  stm2.execute("insert into PROVEEDORES values('"+pro.getId()+"','"+pro.getNombre()+"','"+pro.getDireccion()+"','"+pro.getCorrero()+"','"+pro.getCodigo_postal()+"','"+pro.getFax()+"','"+pro.getNombre_vendedor()+"');");
+			  stm2.execute("insert into proveedores values('"+pro.getId()+"','"+pro.getNombre()+"','"+pro.getDireccion()+"','"+pro.getCorrero()+"','"+pro.getCodigo_postal()+"','"+pro.getFax()+"','"+pro.getNombre_vendedor()+"');");
 			  for(int i=0;i<telefonos.size();i++){
-			  stm2.execute("insert into TELEFONOS values('"+pro.getId()+"','"+telefonos.get(i).toString()+"')");
+			  stm2.execute("insert into telefonos values('"+pro.getId()+"','"+telefonos.get(i).toString()+"')");
 			                                     }
 			  stm2.close();
 			}
@@ -81,7 +81,7 @@ public class Conexion_proveedor {
 		try {
 			Statement stm2= Conex.createStatement();
 			Statement stm= Conex.createStatement();
-			ResultSet rs=stm.executeQuery("select *from PROVEEDORES where CODIGO like '%"+texto+"%' or NOMBRE LIKE '%"+texto+"%' or DIRECCION LIKE '%"+texto+"%' or CORREO LIKE '%"+texto+"%' or NOMBRE_VEND LIKE '%"+texto+"%'");
+			ResultSet rs=stm.executeQuery("select *from proveedores where CODIGO like '%"+texto+"%' or NOMBRE LIKE '%"+texto+"%' or DIRECCION LIKE '%"+texto+"%' or CORREO LIKE '%"+texto+"%' or NOMBRE_VEND LIKE '%"+texto+"%'");
 			
 			while(rs.next())
 			{
@@ -94,7 +94,7 @@ public class Conexion_proveedor {
 				c.setFax(rs.getString(6));
 				c.setNombre_vendedor(rs.getString(7));
 				
-			    ResultSet rs2=stm2.executeQuery("select telefono from TELEFONOS where id='"+c.getId()+"'");
+			    ResultSet rs2=stm2.executeQuery("select telefono from telefonos where id='"+c.getId()+"'");
 			
 				while(rs2.next())
 				{
@@ -123,8 +123,8 @@ public class Conexion_proveedor {
 	{
 		try{
 		Statement stm= Conex.createStatement();
-		stm.executeUpdate("delete from PROVEEDORES where CODIGO='"+codigo+"'");
-		stm.executeUpdate("delete from TELEFONOS where id='"+codigo+"'");
+		stm.executeUpdate("delete from proveedores where CODIGO='"+codigo+"'");
+		stm.executeUpdate("delete from telefonos where id='"+codigo+"'");
 		}catch(Exception e)
 		{
 			new Mensaje().error("Error al Eliminar el Proveedor", "Error");
@@ -138,7 +138,7 @@ public class Conexion_proveedor {
 		try {
 			int canti=0;
 			Statement stm= Conex.createStatement();
-			ResultSet rs=stm.executeQuery("select CODIGO from PROVEEDORES where CODIGO='"+pro.getId()+"'");
+			ResultSet rs=stm.executeQuery("select CODIGO from proveedores where CODIGO='"+pro.getId()+"'");
 			
 			while(rs.next())
 			{
@@ -147,10 +147,10 @@ public class Conexion_proveedor {
 			
 			if(pro.getId().equals(codigo))
 			{
-			stm.executeUpdate("update PROVEEDORES SET CODIGO='"+pro.getId()+"', NOMBRE='"+pro.getNombre()+"',  DIRECCION='"+pro.getDireccion()+"', CORREO='"+pro.getCorrero()+"', CODIGO_POSTAL='"+pro.getCodigo_postal()+"', FAX='"+pro.getFax()+"', NOMBRE_VEND='"+pro.getNombre_vendedor()+"' WHERE CODIGO='"+codigo+"'");
-			stm.executeUpdate("delete from TELEFONOS where id='"+codigo+"'");
+			stm.executeUpdate("update proveedores SET CODIGO='"+pro.getId()+"', NOMBRE='"+pro.getNombre()+"',  DIRECCION='"+pro.getDireccion()+"', CORREO='"+pro.getCorrero()+"', CODIGO_POSTAL='"+pro.getCodigo_postal()+"', FAX='"+pro.getFax()+"', NOMBRE_VEND='"+pro.getNombre_vendedor()+"' WHERE CODIGO='"+codigo+"'");
+			stm.executeUpdate("delete from telefonos where id='"+codigo+"'");
 			
-			 for(int i =0;i<pro.getTelefono_size();i++){stm.execute("insert into TELEFONOS values('"+pro.getId()+"','"+pro.getTelefono(i)+"')");}
+			 for(int i =0;i<pro.getTelefono_size();i++){stm.execute("insert into telefonos values('"+pro.getId()+"','"+pro.getTelefono(i)+"')");}
 			 new Mensaje().listo("El Proveedor fue Actualizado..","Actualizado");
 			 stm.close();
 			}
@@ -162,10 +162,10 @@ public class Conexion_proveedor {
 				}
 				else
 				{
-					stm.executeUpdate("update PROVEEDORES SET CODIGO='"+pro.getId()+"', NOMBRE='"+pro.getNombre()+"',  DIRECCION='"+pro.getDireccion()+"', CORREO='"+pro.getCorrero()+"', CODIGO_POSTAL='"+pro.getCodigo_postal()+"', FAX='"+pro.getFax()+"', NOMBRE_VEND='"+pro.getNombre_vendedor()+"' WHERE CODIGO='"+codigo+"'");
-					stm.executeUpdate("delete from TELEFONOS where id='"+codigo+"'");
+					stm.executeUpdate("update proveedores SET CODIGO='"+pro.getId()+"', NOMBRE='"+pro.getNombre()+"',  DIRECCION='"+pro.getDireccion()+"', CORREO='"+pro.getCorrero()+"', CODIGO_POSTAL='"+pro.getCodigo_postal()+"', FAX='"+pro.getFax()+"', NOMBRE_VEND='"+pro.getNombre_vendedor()+"' WHERE CODIGO='"+codigo+"'");
+					stm.executeUpdate("delete from telefonos where id='"+codigo+"'");
 					
-					 for(int i =0;i<pro.getTelefono_size();i++){stm.execute("insert into TELEFONOS values('"+pro.getId()+"','"+pro.getTelefono(i)+"')");}
+					 for(int i =0;i<pro.getTelefono_size();i++){stm.execute("insert into telefonos values('"+pro.getId()+"','"+pro.getTelefono(i)+"')");}
 					 new Mensaje().listo("El Proveedor fue Actualizado..","Actualizado");
 					 stm.close();
 				}

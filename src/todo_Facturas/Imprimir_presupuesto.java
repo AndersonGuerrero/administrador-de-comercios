@@ -51,7 +51,7 @@ public class Imprimir_presupuesto extends Thread {
      //------------------------------------------------------------------------------------------------------------
 		cenect=Conexion.conect;
 		Statement stm11= cenect.createStatement();
-		ResultSet rs11=stm11.executeQuery("select NOMBRE,DIRECCION from CLIENTES where CEDULA='"+f.getCliente()+"'");
+		ResultSet rs11=stm11.executeQuery("select NOMBRE,DIRECCION from clientes where CEDULA='"+f.getCliente()+"'");
 		rs11.next();
 		cli=new Cliente();
 		cli.setDireccion(rs11.getString(2));
@@ -62,7 +62,7 @@ public class Imprimir_presupuesto extends Thread {
      
      
 	@SuppressWarnings("deprecation")
-	JasperReport reporte = (JasperReport) JRLoader.loadObject("Plantillas\\presupuesto.jasper");  
+	JasperReport reporte = (JasperReport) JRLoader.loadObject("Plantillas" + Inicio.url_sistema + "presupuesto.jasper");  
 	
     Map<String, Object> parametros=new HashMap<String,Object>();
     parametros.put("nombre_cliente",cli.getNombre());
@@ -97,10 +97,10 @@ public class Imprimir_presupuesto extends Thread {
 
      JRExporter exporter = new JRPdfExporter();  
      exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint); 
-     exporter.setParameter(JRExporterParameter.OUTPUT_FILE, new java.io.File("Reportes\\presupuesto.pdf")); 
+     exporter.setParameter(JRExporterParameter.OUTPUT_FILE, new java.io.File("Reportes" + Inicio.url_sistema + "presupuesto.pdf")); 
      exporter.exportReport(); 
      
-		File archivo=new File("Reportes\\presupuesto.pdf");
+		File archivo=new File("Reportes" + Inicio.url_sistema + "presupuesto.pdf");
 		Desktop.getDesktop().open(archivo);
 	}catch(Exception e){
 		e.printStackTrace();

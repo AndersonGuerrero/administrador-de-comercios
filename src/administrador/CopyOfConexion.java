@@ -182,10 +182,10 @@ public class CopyOfConexion {
 			Statement stm= conect.createStatement();
 			stm.executeUpdate("UPDATE USUARIOS SET USUARIO='"+vector[1]+"',CONTRASEÑA='"+new Cod_pw().Codificacionm(vector[2])+"',INVENTARIO="+vector[3]+
 					",FACTURAS="+vector[4]+
-					",FACTURACION="+vector[5]+
-					",CLIENTES="+vector[6]+
+					",facturacion="+vector[5]+
+					",clientes="+vector[6]+
 					",CONFIGURACION="+vector[7]+
-					",PROVEEDORES="+vector[8]+
+					",proveedores="+vector[8]+
 					" where USUARIO='"+nombre_ante+"'");
 			
 		} catch (SQLException e) {

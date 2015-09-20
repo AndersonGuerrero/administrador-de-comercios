@@ -32,7 +32,7 @@ public class Sourse_x_factura implements JRDataSource{
 		{
 			try{
 			Statement stm= Conexion.conect.createStatement();
-			ResultSet rs=stm.executeQuery("select DESCRIPCION from PRODUCTOS WHERE CODIGO='"+F.getPro_fac(cant)[0]+"'");
+			ResultSet rs=stm.executeQuery("select DESCRIPCION from productos WHERE CODIGO='"+F.getPro_fac(cant)[0]+"'");
 			rs.next();
 			dato=rs.getString(1);
 			rs.close();

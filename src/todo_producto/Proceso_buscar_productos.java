@@ -42,14 +42,14 @@ public class Proceso_buscar_productos extends Thread  {
          
 			try {
 				Statement stm= Conex.createStatement();
-				ResultSet rs2=stm.executeQuery("select count(1) from PRODUCTOS where CODIGO like '%"+texto+"%' or NOMBRE LIKE '%"+texto+"%' or MARCA LIKE '%"+texto+"%' or MODELO LIKE '%"+texto+"%' or DESCRIPCION LIKE '%"+texto+"%'");
+				ResultSet rs2=stm.executeQuery("select count(1) from productos where CODIGO like '%"+texto+"%' or NOMBRE LIKE '%"+texto+"%' or MARCA LIKE '%"+texto+"%' or MODELO LIKE '%"+texto+"%' or DESCRIPCION LIKE '%"+texto+"%'");
 				
 				rs2.next();
 				x=rs2.getInt(1);
 				
 				rs2.close();
 				Buscar_Producto.barra_carga.setMaximum(x*2);
-				ResultSet rs=stm.executeQuery("select *from PRODUCTOS where CODIGO like '%"+texto+"%' or NOMBRE LIKE '%"+texto+"%' or MARCA LIKE '%"+texto+"%' or MODELO LIKE '%"+texto+"%' or DESCRIPCION LIKE '%"+texto+"%'");
+				ResultSet rs=stm.executeQuery("select *from productos where CODIGO like '%"+texto+"%' or NOMBRE LIKE '%"+texto+"%' or MARCA LIKE '%"+texto+"%' or MODELO LIKE '%"+texto+"%' or DESCRIPCION LIKE '%"+texto+"%'");
 				
 				
 				x=0;

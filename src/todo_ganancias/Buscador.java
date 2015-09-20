@@ -24,12 +24,12 @@ public class Buscador {
 		try{
 			Statement stm= cone.createStatement();
 			Statement stm1= cone.createStatement();
-			ResultSet rs =stm.executeQuery("select  COD_FAC,IVA from FACTURACION where FECHA='"+fecha+"' and ESTADO='1'");
+			ResultSet rs =stm.executeQuery("select  COD_FAC,IVA from facturacion where FECHA='"+fecha+"' and ESTADO='1'");
 			while(rs.next())
 			{	
 				Codigo=rs.getString(1);
 				IVA=rs.getString(2);
-				ResultSet rs1=stm1.executeQuery("select COSTO,CANTIDAD FROM FAC_PROD where COD_FACT='"+Codigo+"'");
+				ResultSet rs1=stm1.executeQuery("select COSTO,CANTIDAD FROM fac_prod where COD_FACT='"+Codigo+"'");
 				while(rs1.next())
 				{
 			   BigDecimal costox=new BigDecimal("0");
@@ -69,13 +69,13 @@ public class Buscador {
 		try{
 			Statement stm= cone.createStatement();
 			Statement stm1= cone.createStatement();
-			ResultSet rs =stm.executeQuery("select  COD_FAC,IVA from FACTURACION where FECHA like'%"+fecha+"' and ESTADO='1'");
+			ResultSet rs =stm.executeQuery("select  COD_FAC,IVA from facturacion where FECHA like'%"+fecha+"' and ESTADO='1'");
 		
 			while(rs.next())
 			{	
 				Codigo=rs.getString(1);
 				IVA=rs.getString(2);
-				ResultSet rs1=stm1.executeQuery("select COSTO,CANTIDAD FROM FAC_PROD where COD_FACT='"+Codigo+"'");
+				ResultSet rs1=stm1.executeQuery("select COSTO,CANTIDAD FROM fac_prod where COD_FACT='"+Codigo+"'");
 				while(rs1.next())
 				{
 			   BigDecimal costox=new BigDecimal("0");
@@ -115,7 +115,7 @@ public class Buscador {
 		try{
 			Statement stm= cone.createStatement();
 		
-			ResultSet rs =stm.executeQuery("select  COSTO_COMPRA,COSTO_VENTA,CANTIDAD from PRODUCTOS");
+			ResultSet rs =stm.executeQuery("select  COSTO_COMPRA,COSTO_VENTA,CANTIDAD from productos");
 		
 			while(rs.next())
 			{	

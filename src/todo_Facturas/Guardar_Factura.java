@@ -19,17 +19,17 @@ public static String cod="";
 		try{
 			conex=Conexion.conect;	
 			Statement stm= conex.createStatement();
-			x=stm.execute("insert into FACTURACION(CLIENTE,FECHA,HORA,IVA,USUARIO,ESTADO) VALUES('"+F.getCliente()+"','"+F.getFecha()+"','"+F.getHora()+"','"+F.getIva()+"','"+F.getUsuario()+"','"+F.getEstado()+"')");
+			x=stm.execute("insert into facturacion(CLIENTE,FECHA,HORA,IVA,USUARIO,ESTADO) VALUES('"+F.getCliente()+"','"+F.getFecha()+"','"+F.getHora()+"','"+F.getIva()+"','"+F.getUsuario()+"','"+F.getEstado()+"')");
 			if(x==false)
 			{
 				
-				ResultSet rs1=	stm.executeQuery("select MAX(COD_FAC) From FACTURACION");
+				ResultSet rs1=	stm.executeQuery("select MAX(COD_FAC) From facturacion");
 				rs1.next();
 				String Codigo=rs1.getString(1);
 				cod=Codigo;
 				for(int i=0;i<F.getPro_fac_sise();i++)
 				{
-					 ResultSet rsx=stm.executeQuery("select CANTIDAD from PRODUCTOS where CODIGO='"+F.getPro_fac(i)[0]+"'");
+					 ResultSet rsx=stm.executeQuery("select CANTIDAD from productos where CODIGO='"+F.getPro_fac(i)[0]+"'");
 					rsx.next();
 
 					String txt1=rsx.getString(1);
@@ -46,17 +46,17 @@ public static String cod="";
 					sig=ant.subtract(sig);
 				    
 		
-					stm.executeUpdate("update PRODUCTOS set CANTIDAD='"+sig+":"+txt2[1]+"'  where CODIGO='"+F.getPro_fac(i)[0]+"'");
+					stm.executeUpdate("update productos set CANTIDAD='"+sig+":"+txt2[1]+"'  where CODIGO='"+F.getPro_fac(i)[0]+"'");
 					
 					
 					
-					stm.execute("insert into FAC_PROD values('"+Codigo+"','"+F.getPro_fac(i)[0]+"','"+txt3[0]+":"+txt3[1]+"','"+F.getPro_fac(i)[2]+"','1')");}
+					stm.execute("insert into fac_prod values('"+Codigo+"','"+F.getPro_fac(i)[0]+"','"+txt3[0]+":"+txt3[1]+"','"+F.getPro_fac(i)[2]+"','1')");}
 				
 				
 				
 				
 				for(int i=0;i<F.getTipo_pago_sise();i++)
-				{stm.execute("insert into TIPO_PAGO values('"+Codigo+"','"+F.getTipo_pago(i)[0]+"','"+F.getTipo_pago(i)[1]+"')");}
+				{stm.execute("insert into tipo_pago values('"+Codigo+"','"+F.getTipo_pago(i)[0]+"','"+F.getTipo_pago(i)[1]+"')");}
 				
 				
 			}
@@ -85,7 +85,7 @@ public static String cod="";
 		try{
 			Statement stm=conex.createStatement();	
 			
-		    boolean x=stm.execute("update  FACTURACION set ESTADO='0' where COD_FAC="+f.getCodigo()+"");
+		    boolean x=stm.execute("update  facturacion set ESTADO='0' where COD_FAC="+f.getCodigo()+"");
 
 			if(x==false)
 			{
@@ -95,7 +95,7 @@ public static String cod="";
 					
 					
 					
-					ResultSet rs= stm.executeQuery("select CANTIDAD from PRODUCTOS where CODIGO='"+f.getPro_fac(i)[0]+"'");
+					ResultSet rs= stm.executeQuery("select CANTIDAD from productos where CODIGO='"+f.getPro_fac(i)[0]+"'");
 					rs.next();
 					String vector_cant_ant[]=rs.getString(1).split(":");
 					
@@ -106,7 +106,7 @@ public static String cod="";
 					
 					cant1=cant1.add(cant2);
 					
-					if(f.getPro_fac(i)[3].equals("1")){stm.execute("update PRODUCTOS set CANTIDAD='"+cant1+":"+vector_cant_ant[1]+"'  where CODIGO='"+f.getPro_fac(i)[0]+"'");}
+					if(f.getPro_fac(i)[3].equals("1")){stm.execute("update productos set CANTIDAD='"+cant1+":"+vector_cant_ant[1]+"'  where CODIGO='"+f.getPro_fac(i)[0]+"'");}
 				}
 				
 				for(int i=0;i<f.getPro_fac_sise();i++)
@@ -131,7 +131,7 @@ conex=Conexion.conect;
 		try{
 			Statement stm=conex.createStatement();	
 
-					ResultSet rs= stm.executeQuery("select CANTIDAD from PRODUCTOS where CODIGO='"+codigo_producto+"'");
+					ResultSet rs= stm.executeQuery("select CANTIDAD from productos where CODIGO='"+codigo_producto+"'");
 					rs.next();
 					
 					String vector_cant_ant[]=rs.getString(1).split(":");
@@ -142,19 +142,19 @@ conex=Conexion.conect;
 					cant1=cant1.add(cant2);
 
 					
-					boolean x=stm.execute("update PRODUCTOS set CANTIDAD='"+cant1+":"+vector_cant_ant[1]+"'  where CODIGO='"+codigo_producto+"'");
+					boolean x=stm.execute("update productos set CANTIDAD='"+cant1+":"+vector_cant_ant[1]+"'  where CODIGO='"+codigo_producto+"'");
 					
 					if(cancelar_fact)
 					{
 						stm.execute("update facturacion set estado='0'  where COD_FAC="+Cod_fact+"");
 					}
 					
-					if(delete){stm.execute("update FAC_PROD set estado='0'  where COD_FACT='"+Cod_fact+"'  and COD_PRO='"+codigo_producto+"'");}
+					if(delete){stm.execute("update fac_prod set estado='0'  where COD_FACT='"+Cod_fact+"'  and COD_PRO='"+codigo_producto+"'");}
 					else{
 						BigDecimal can_ant=new BigDecimal(cant_ant_prod_select);
 						BigDecimal can_sum=new BigDecimal(canat_a_sumar);
 						can_ant=can_ant.subtract(can_sum);
-					    stm.execute("update FAC_PROD set CANTIDAD='"+can_ant+":"+vector_cant_ant[1]+"'  where COD_FACT='"+Cod_fact+"'  and  COD_PRO ='"+codigo_producto+"'");}
+					    stm.execute("update fac_prod set CANTIDAD='"+can_ant+":"+vector_cant_ant[1]+"'  where COD_FACT='"+Cod_fact+"'  and  COD_PRO ='"+codigo_producto+"'");}
 					
 					
 					
