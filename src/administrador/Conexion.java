@@ -106,7 +106,7 @@ public class Conexion {
 			while(rs3.next())
 			{
 				String usuariov[];
-				usuariov=new String[9];
+				usuariov=new String[10];
 				
 				usuariov[1]=rs3.getString(1);
 				usuariov[2]=new Dco_pw().Decodificacionm(rs3.getString(2));
@@ -117,7 +117,8 @@ public class Conexion {
 				usuariov[6]=rs3.getString(6);
 				usuariov[7]=rs3.getString(7);
 				usuariov[8]=rs3.getString(8);
-		        lista_users.add(usuariov);
+				usuariov[9]=new Dco_pw().Decodificacionm(rs3.getString(9));
+				lista_users.add(usuariov);
 			}
 			
  			
@@ -146,6 +147,7 @@ public class Conexion {
 			rs.next();
 		   
 			    user.setXusuario(rs.getString(1));
+			    user.setXclaveconfg(new Dco_pw().Decodificacionm(rs.getString(9)));
 			    Inicio.inventario=rs.getBoolean(3);
 				Inicio.facturas=rs.getBoolean(4);
 				Inicio.facturacion=rs.getBoolean(5);
@@ -189,6 +191,7 @@ public class Conexion {
 					",clientes="+vector[6]+
 					",configuracion="+vector[7]+
 					",proveedores="+vector[8]+
+					",pass_2='"+new Cod_pw().Codificacionm(vector[9])+"' "+
 					" where USUARIO='"+nombre_ante+"'");
 			
 		} catch (SQLException e) {
@@ -218,7 +221,7 @@ public class Conexion {
  			
  			if(conect!=null){
  				Statement stm= conect.createStatement();
-			stm.executeUpdate("INSERT INTO usuarios VALUES('"+vector[1].toUpperCase()+"','"+new Cod_pw().Codificacionm(vector[2])+"',"+vector[3]+","+vector[4]+","+vector[5]+","+vector[6]+","+vector[7]+","+vector[8]+")");
+			stm.executeUpdate("INSERT INTO usuarios VALUES('"+vector[1].toUpperCase()+"','"+new Cod_pw().Codificacionm(vector[2])+"',"+vector[3]+","+vector[4]+","+vector[5]+","+vector[6]+","+vector[7]+","+vector[8]+",'"+new Cod_pw().Codificacionm(vector[9])+"')");
  			}
  			} catch (SQLException e) {new Mensaje().error("Error al Guardar el usuario", "Error");}
  		

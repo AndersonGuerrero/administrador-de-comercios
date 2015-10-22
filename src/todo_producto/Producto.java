@@ -9,20 +9,22 @@ public class Producto {
 	private String descripcion;
 	private String costo_compra;
 	private String costo_venta;
-	private String ubicacion;
+	private String departamento;
 	private String cantidad;
 	private String cod_proveedor;
+	private String fecha;
 	
 	public Producto()
 	{
      codigo="";
 	 nombre="";
+	 fecha="";
 	 marca="";
 	 modelo="";
 	 descripcion="";
 	 costo_compra="";
 	 costo_venta="";
-	 ubicacion="";
+	 departamento="";
 	 cantidad="";
 	 cod_proveedor="";
 	}
@@ -83,12 +85,12 @@ public class Producto {
 		this.costo_venta = costo_venta.toUpperCase();
 	}
 
-	public String getUbicacion() {
-		return ubicacion;
+	public String getDepartamento() {
+		return departamento;
 	}
 
-	public void setUbicacion(String ubicacion) {
-		this.ubicacion = ubicacion.toUpperCase();
+	public void setDepartamento(String ubicacion) {
+		this.departamento = ubicacion.toUpperCase();
 	}
 
 	public String getCantidad() {
@@ -107,6 +109,13 @@ public class Producto {
 		this.cod_proveedor = cod_proveedor.toUpperCase();
 	}
 	
+	public String getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
+	}
 	
 	
 	

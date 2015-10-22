@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Listado_Ubi" language="groovy" pageWidth="595" pageHeight="793" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7c78d045-9fdc-4137-9d3c-4e348900a697">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<parameter name="rif" class="java.lang.String"/>
+	<parameter name="empresa" class="java.lang.String"/>
 	<field name="codigo" class="java.lang.String"/>
 	<field name="nombre" class="java.lang.String"/>
 	<field name="marca" class="java.lang.String"/>
@@ -14,18 +16,31 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="24" splitType="Stretch">
-			<staticText>
-				<reportElement uuid="8bea1c01-f86e-4016-8004-3c3384758232" x="145" y="0" width="278" height="24"/>
-				<textElement>
-					<font size="16" isBold="true"/>
+		<band height="39" splitType="Stretch">
+			<textField>
+				<reportElement uuid="1cc7a46e-c86b-4b82-942c-f88bb85562c3" x="0" y="1" width="555" height="24"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Listado de productos por Ubicacion]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA[$P{empresa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="63865946-eca6-4b02-83a2-4f0ff0484641" x="413" y="25" width="142" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{rif}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="29" splitType="Stretch"/>
+		<band height="38" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="8bea1c01-f86e-4016-8004-3c3384758232" x="127" y="14" width="326" height="24"/>
+				<textElement>
+					<font size="16" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Listado de productos por Departamento]]></text>
+			</staticText>
+		</band>
 	</pageHeader>
 	<columnHeader>
 		<band height="20" splitType="Stretch">
@@ -65,11 +80,11 @@
 				<text><![CDATA[DESCRIPCION]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="66f85ec0-80c2-472f-b34d-23bddd3e69b1" x="433" y="0" width="59" height="20"/>
+				<reportElement uuid="66f85ec0-80c2-472f-b34d-23bddd3e69b1" x="423" y="0" width="80" height="20"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[UBICACION]]></text>
+				<text><![CDATA[Departamento]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="69989692-05b3-4157-9772-a12c050b158b" x="503" y="0" width="52" height="20"/>
@@ -106,12 +121,12 @@
 				<textFieldExpression><![CDATA[$F{modelo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="94c09095-b277-4a9f-a264-5e4bba7e20b1" x="308" y="0" width="125" height="14"/>
+				<reportElement uuid="94c09095-b277-4a9f-a264-5e4bba7e20b1" x="308" y="0" width="115" height="14"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="19e1db36-3b40-4132-a670-770d4dcbda19" x="433" y="1" width="59" height="13"/>
+				<reportElement uuid="19e1db36-3b40-4132-a670-770d4dcbda19" x="423" y="1" width="80" height="13"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{ubicacion}]]></textFieldExpression>
 			</textField>

@@ -43,7 +43,6 @@ public class Inicio {
 	
 	public static void decorar()
 	{
-		
 		SwingUtilities.invokeLater(new Runnable() {
 						public void run() {
 				try{
@@ -53,11 +52,6 @@ public class Inicio {
 					
 				}catch(Exception e){e.printStackTrace();}
 			}
-		});
-		
-		
+		});	
 	}
-
-
-	
 }

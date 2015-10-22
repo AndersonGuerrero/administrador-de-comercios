@@ -50,13 +50,13 @@ public static String cod="";
 					
 					
 					
-					stm.execute("insert into fac_prod values('"+Codigo+"','"+F.getPro_fac(i)[0]+"','"+txt3[0]+":"+txt3[1]+"','"+F.getPro_fac(i)[2]+"','1')");}
+					stm.execute("insert into fac_prod(COD_FACT,COD_PRO,CANTIDAD,COSTO,estado) values('"+Codigo+"','"+F.getPro_fac(i)[0]+"','"+txt3[0]+":"+txt3[1]+"','"+F.getPro_fac(i)[2]+"','1')");}
 				
 				
 				
 				
 				for(int i=0;i<F.getTipo_pago_sise();i++)
-				{stm.execute("insert into tipo_pago values('"+Codigo+"','"+F.getTipo_pago(i)[0]+"','"+F.getTipo_pago(i)[1]+"')");}
+				{stm.execute("insert into tipo_pago(COD_FACT,TIPO_PAGO,CANTIDAD) values('"+Codigo+"','"+F.getTipo_pago(i)[0]+"','"+F.getTipo_pago(i)[1]+"')");}
 				
 				
 			}

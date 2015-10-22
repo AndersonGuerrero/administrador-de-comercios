@@ -9,9 +9,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
-
 import todo_clientes.Cliente;
-
 import net.sf.jasperreports.engine.JRExporter;
 import net.sf.jasperreports.engine.JRExporterParameter;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -70,14 +68,13 @@ public class Imprimir_factura extends Thread {
 		{
 			String vectorx[]=new String[3];
 			
-			vectorx[0]=rs1.getString(2);
-			vectorx[1]=rs1.getString(3);
+			vectorx[0]=rs1.getString("COD_PRO");
+			vectorx[1]=rs1.getString("CANTIDAD");
 			String cantString[]=vectorx[1].split(":");
 			
 			BigDecimal cant=new BigDecimal(cantString[0]);
 			
-			vectorx[2]=rs1.getString(4);
-			
+			vectorx[2]=rs1.getString("COSTO");
 			BigDecimal costo=new BigDecimal(vectorx[2]);
 			costo=costo.multiply(cant).setScale(2,RoundingMode.HALF_EVEN);
 			subtotal=subtotal.add(costo);
@@ -99,8 +96,8 @@ public class Imprimir_factura extends Thread {
 		while(rs2.next())
 		{
 			String vectorx[]=new String[2];
-			vectorx[0]=rs2.getString(2);
-			vectorx[1]=rs2.getString(3);
+			vectorx[0]=rs2.getString("TIPO_PAGO");
+			vectorx[1]=rs2.getString("CANTIDAD");
 			
 			f.setTipo_pago(vectorx);
 		}
@@ -127,8 +124,8 @@ public class Imprimir_factura extends Thread {
 		ResultSet rs11=stm11.executeQuery("select NOMBRE,DIRECCION from clientes where CEDULA='"+f.getCliente()+"'");
 		rs11.next();
 		cli=new Cliente();
-		cli.setDireccion(rs11.getString(2));
-		cli.setNombre(rs11.getString(1));
+		cli.setDireccion(rs11.getString("DIRECCION"));
+		cli.setNombre(rs11.getString("NOMBRE"));
 		rs11.close();
 		stm11.close();
 	}catch(Exception e){}

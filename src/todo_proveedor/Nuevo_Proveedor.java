@@ -19,6 +19,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import administrador.Inicio;
 import funciones.Dialogo;
 import funciones.Enfocar;
 import funciones.Fondo;
@@ -40,6 +41,7 @@ public class Nuevo_Proveedor implements ActionListener,KeyListener,MouseListener
 	ImageIcon icono;
 	JLabel mas,codigosl;
 	Fondo fondo;
+	Boolean is_aroba = false;
 	public Nuevo_Proveedor() {
 		
 	Dialogo d=new Dialogo("NUEVO PROVEEDOR", 725,230);
@@ -61,7 +63,7 @@ public class Nuevo_Proveedor implements ActionListener,KeyListener,MouseListener
 	codigosl.setBounds(210,25,100,20);
 	
 	mas=new JLabel();
-	icono=new ImageIcon("Images\\mas.png");
+	icono=new ImageIcon("Images" + Inicio.url_sistema + "mas.png");
 	mas.setIcon(icono);
 	mas.setBounds(675,53, 50,30);
 	mas.setCursor(new Cursor(12));
@@ -163,7 +165,7 @@ public class Nuevo_Proveedor implements ActionListener,KeyListener,MouseListener
 	d.add(id_proveedor);d.add(id_proveedorl);
 	d.add(nombre);d.add(nombrel);
 	
-	d.add(correo);d.add(correol);d.add(lista);d.add(aroba);
+	d.add(correo);d.add(correol);
 	d.add(codigo_poastal);d.add(codigo_poastall);
 	d.add(telefonos);
 	d.add(mas);
@@ -195,7 +197,10 @@ public class Nuevo_Proveedor implements ActionListener,KeyListener,MouseListener
 	
 		if(a.getSource().equals(guardar))
 		{
-			if(id_proveedor.getText().equals("") ||  id_proveedor.getText().equals("P-") || nombre.getText().equals("") || direccion.getText().equals("") 
+			new Mensaje().pregunta("Desea Continuar", "Confirmar");
+			if(Mensaje.resp){
+			
+			if(is_aroba==false || correo.getText().indexOf("@") == -1 || id_proveedor.getText().equals("") ||  id_proveedor.getText().equals("P-") || nombre.getText().equals("") || direccion.getText().equals("") 
 					  || telefonos.getItemCount()<=0
 					  || vendedor.getText().equals(""))
 			{
@@ -204,6 +209,7 @@ public class Nuevo_Proveedor implements ActionListener,KeyListener,MouseListener
 				else if( direccion.getText().equals("")){new Mensaje().error("Introduzca la direccion del proveedor", "Rellene Todos los Campos");new Enfocar(direccion);}
 				else if(telefonos.getItemCount()<=0){new Mensaje().error("Introduzca un numero telefonico para el proveedor", "Rellene Todos los Campos");new Enfocar(telefonos);}
 				else if(vendedor.getText().equals("")){new Mensaje().error("Introduzca el nombre del Vendedor", "Rellene Todos los Campos");new Enfocar(vendedor);}
+				else if(is_aroba==false){new Mensaje().error("Introduzca un correo valido", "Rellene Todos los Campos");new Enfocar(correo);}
 			}
 			else
 			{
@@ -211,7 +217,7 @@ public class Nuevo_Proveedor implements ActionListener,KeyListener,MouseListener
 			    pro.setId(id_proveedor.getText());
 		    	pro.setNombre(nombre.getText());
 			pro.setDireccion(direccion.getText());
-			pro.setCorrero(correo.getText()+"@"+lista.getSelectedItem().toString());
+			pro.setCorrero(correo.getText());
 			pro.setCodigo_postal(codigo_poastal.getText());
 			pro.setFax(fax.getText());
 			pro.setNombre_vendedor(vendedor.getText());
@@ -227,6 +233,7 @@ public class Nuevo_Proveedor implements ActionListener,KeyListener,MouseListener
 			
 			if(x)
 			{
+				is_aroba=false;
 				new Mensaje().listo("El Proveedor Con el Codogo "+pro.getId()+" Fue Registrado..","Registro Exitoso");
 				id_proveedor.setText("");
 				nombre.setText("");
@@ -246,9 +253,8 @@ public class Nuevo_Proveedor implements ActionListener,KeyListener,MouseListener
 			
 			}
 		}
-		else
-	
-		if(a.getSource().equals(borrar))
+		}
+		else if(a.getSource().equals(borrar))
 	    {
 		id_proveedor.setText("");
 		nombre.setText("");
@@ -258,6 +264,7 @@ public class Nuevo_Proveedor implements ActionListener,KeyListener,MouseListener
 		telefonos.removeAllItems();
 		vendedor.setText("");
 		fax.setText("");
+		is_aroba=false;
 		lista.setSelectedIndex(0);
 		
 		new Enfocar(id_proveedor);
@@ -322,7 +329,13 @@ public class Nuevo_Proveedor implements ActionListener,KeyListener,MouseListener
 		
 		if(k.getSource().equals(correo))
 		{
-			if(correo.getText().length()==30){k.consume();}
+			if(correo.getText().length()==100){k.consume();}
+			char ar = k.getKeyChar();
+			if(ar == '@' && is_aroba == false )          
+			 {
+				is_aroba=true;
+			 }else if (ar == '@' && is_aroba == true) {k.consume();}
+				 
 		}
 
 		if(k.getSource().equals(codigo_poastal))
@@ -346,18 +359,7 @@ public class Nuevo_Proveedor implements ActionListener,KeyListener,MouseListener
 		
 			char ar = k.getKeyChar();
 		
-		if((ar<'a' || ar>'z')&& (ar<'A' || ar>'Z')&& ar!=KeyEvent.VK_SPACE && ar !='á'           
-			    && ar !='é'
-			    && ar !='.'
-			    && ar !='-'
-			    && ar !='í'            
-			    && ar !='ó'           
-			    && ar !='ú'   
-			    && ar !='Á'           
-			    && ar !='É'            
-			    && ar !='Í'            
-			    && ar !='Ó'           
-			    && ar !='Ú') {k.consume();}}
+		if((ar<'a' || ar>'z')&& (ar<'A' || ar>'Z')&& ar!=KeyEvent.VK_SPACE) {k.consume();}}
 		
 	}
 

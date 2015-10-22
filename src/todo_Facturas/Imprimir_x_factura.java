@@ -57,13 +57,13 @@ public class Imprimir_x_factura extends Thread {
 
 		f=new Factura();
 	
-		f.setCodigo(rs.getString(1));
-		f.setCliente(rs.getString(2));
-		f.setEstado(rs.getString(7));
-		f.setFecha(rs.getString(3));
-		f.setHora(rs.getString(4));
-		f.setIva(rs.getString(5));
-		f.setUsuario(rs.getString(6));
+		f.setCodigo(rs.getString("COD_FAC"));
+		f.setCliente(rs.getString("CLIENTE"));
+		f.setEstado(rs.getString("ESTADO"));
+		f.setFecha(rs.getString("FECHA"));
+		f.setHora(rs.getString("HORA"));
+		f.setIva(rs.getString("IVA"));
+		f.setUsuario(rs.getString("USUARIO"));
 		
 		ResultSet rs1=stm1.executeQuery("select *from fac_prod  where COD_FACT='"+cod+"'");
 		
@@ -71,13 +71,13 @@ public class Imprimir_x_factura extends Thread {
 		{
 			String vectorx[]=new String[3];
 			
-			vectorx[0]=rs1.getString(2);
-			vectorx[1]=rs1.getString(3);
+			vectorx[0]=rs1.getString("COD_PRO");
+			vectorx[1]=rs1.getString("CANTIDAD");
 			String cantString[]=vectorx[1].split(":");
 			
 			BigDecimal cant=new BigDecimal(cantString[0]);
 			
-			vectorx[2]=rs1.getString(4);
+			vectorx[2]=rs1.getString("COSTO");
 			
 			BigDecimal costo=new BigDecimal(vectorx[2]);
 			costo=costo.multiply(cant).setScale(2,RoundingMode.HALF_EVEN);
@@ -100,8 +100,8 @@ public class Imprimir_x_factura extends Thread {
 		while(rs2.next())
 		{
 			String vectorx[]=new String[2];
-			vectorx[0]=rs2.getString(2);
-			vectorx[1]=rs2.getString(3);
+			vectorx[0]=rs2.getString("TIPO_PAGO");
+			vectorx[1]=rs2.getString("CANTIDAD");
 			
 			f.setTipo_pago(vectorx);
 		}
@@ -128,8 +128,8 @@ public class Imprimir_x_factura extends Thread {
 		ResultSet rs11=stm11.executeQuery("select NOMBRE,DIRECCION from clientes where CEDULA='"+f.getCliente()+"'");
 		rs11.next();
 		cli=new Cliente();
-		cli.setDireccion(rs11.getString(2));
-		cli.setNombre(rs11.getString(1));
+		cli.setDireccion(rs11.getString("DIRECCION"));
+		cli.setNombre(rs11.getString("NOMBRE"));
 		rs11.close();
 		stm11.close();
 	}catch(Exception e){}
@@ -138,7 +138,7 @@ public class Imprimir_x_factura extends Thread {
      
      
 	@SuppressWarnings("deprecation")
-	JasperReport reporte = (JasperReport) JRLoader.loadObject("Plantillas//Factura.jasper");  
+	JasperReport reporte = (JasperReport) JRLoader.loadObject("Plantillas" + Inicio.url_sistema+ "Factura.jasper");  
 	
     Map<String, Object> parametros=new HashMap<String,Object>();
     parametros.put("nombre_cliente",cli.getNombre());
@@ -184,7 +184,7 @@ public class Imprimir_x_factura extends Thread {
 
      JRExporter exporter = new JRPdfExporter();  
      exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint); 
-     exporter.setParameter(JRExporterParameter.OUTPUT_FILE, new java.io.File("Reportes//Factura_x.pdf")); 
+     exporter.setParameter(JRExporterParameter.OUTPUT_FILE, new java.io.File("Reportes" + Inicio.url_sistema+ "Factura_x.pdf")); 
      exporter.exportReport(); 
  
      

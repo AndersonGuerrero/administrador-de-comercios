@@ -2,7 +2,10 @@ package todo_producto;
 
 import java.awt.Desktop;
 import java.io.File;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
+
 import administrador.Inicio;
 import net.sf.jasperreports.engine.JRExporter;
 import net.sf.jasperreports.engine.JRExporterParameter;
@@ -27,7 +30,13 @@ public class Imprimir_lista_por_ubi
 			   sourse.addlista(lista);
                 @SuppressWarnings("deprecation")
                 JasperReport reporte = (JasperReport) JRLoader.loadObject("Plantillas" + Inicio.url_sistema + "Listado_Ubi.jasper");  
-			    JasperPrint jasperPrint = JasperFillManager.fillReport(reporte, null, sourse);  
+                Map<String, Object> parametros=new HashMap<String,Object>();
+                parametros.put("rif",Inicio.c.getRif());
+                parametros.put("empresa",Inicio.c.getNombre_empresa());
+                parametros.put("telefono1",Inicio.c.getTelefono1());
+                parametros.put("telefono2",Inicio.c.getTelefono2());
+                parametros.put("telefono3",Inicio.c.getTelefono3());
+                JasperPrint jasperPrint = JasperFillManager.fillReport(reporte, parametros, sourse);  
 			    JRExporter exporter = new JRPdfExporter();  
 			    exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint); 
 			    exporter.setParameter(JRExporterParameter.OUTPUT_FILE, new java.io.File("Reportes" + Inicio.url_sistema + "Listado por Ubicacion.pdf")); 

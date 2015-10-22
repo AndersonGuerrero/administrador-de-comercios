@@ -35,7 +35,7 @@ Connection Conex;
 		try{
 	
 			 Statement stm= Conex.createStatement();
-				ResultSet rs=stm.executeQuery("select *from productos WHERE UBICACION="+text_buscar+"");
+				ResultSet rs=stm.executeQuery("select *from productos WHERE DEPARTAMENTO='"+text_buscar.toUpperCase()+"'");
 				int cont =0;
 				while(rs.next())
 				{
@@ -61,7 +61,7 @@ Connection Conex;
 		}catch(Exception e)
 		{
 			System.out.println(e.toString());
-			new Mensaje().error("Error al bascar en la base de datos listado por Ubicacion", e.toString());
+			new Mensaje().error("Error al bascar en la base de datos listado por Departamento", e.toString());
 		}
 		return null;
 	}
@@ -115,7 +115,7 @@ Connection Conex;
 				
 				
 				
-			  stm2.execute("insert into productos values('"+pro.getCodigo()+"','"+pro.getNombre()+"','"+pro.getMarca()+"','"+pro.getModelo()+"','"+pro.getDescripcion()+"','"+pro.getCosto_compra()+"','"+pro.getCosto_venta()+"','"+pro.getUbicacion()+"','"+pro.getCantidad()+"','"+pro.getCod_proveedor()+"');");
+			  stm2.execute("insert into productos values('"+pro.getCodigo()+"','"+pro.getNombre()+"','"+pro.getMarca()+"','"+pro.getModelo()+"','"+pro.getDescripcion()+"','"+pro.getCosto_compra()+"','"+pro.getCosto_venta()+"','"+pro.getDepartamento()+"','"+pro.getCantidad()+"','"+pro.getCod_proveedor()+"','"+pro.getFecha()+"');");
 			  
 			  stm2.close();
 			}
@@ -176,7 +176,7 @@ Connection Conex;
 			
 			if(codigo.equals(pro.getCodigo()))
 			{
-				stm.executeUpdate("update productos SET CODIGO='"+pro.getCodigo()+"', NOMBRE='"+pro.getNombre()+"',  MARCA='"+pro.getMarca()+"', MODELO='"+pro.getModelo()+"', DESCRIPCION='"+pro.getDescripcion()+"', COSTO_COMPRA='"+pro.getCosto_compra()+"', COSTO_VENTA='"+pro.getCosto_venta()+"', UBICACION='"+pro.getUbicacion()+"', CANTIDAD='"+pro.getCantidad()+"', COD_PROVEEDOR='"+pro.getCod_proveedor()+"' WHERE CODIGO='"+codigo+"'");
+				stm.executeUpdate("update productos SET CODIGO='"+pro.getCodigo()+"', NOMBRE='"+pro.getNombre()+"',  MARCA='"+pro.getMarca()+"', MODELO='"+pro.getModelo()+"', DESCRIPCION='"+pro.getDescripcion()+"', COSTO_COMPRA='"+pro.getCosto_compra()+"', COSTO_VENTA='"+pro.getCosto_venta()+"', UBICACION='"+pro.getDepartamento()+"', CANTIDAD='"+pro.getCantidad()+"', COD_PROVEEDOR='"+pro.getCod_proveedor()+"' WHERE CODIGO='"+codigo+"'");
 				new Mensaje().listo("El Producto Fue Actualiizado..", "Actualizado");
 				stm.close();
 			}
@@ -187,7 +187,7 @@ Connection Conex;
 					new Mensaje().error("Este Codigo Ya Existe","Ecriba Otro Codigo");rs.close();	
 				}
 				 else{
-					 stm.executeUpdate("update productos SET CODIGO='"+pro.getCodigo()+"', NOMBRE='"+pro.getNombre()+"',  MARCA='"+pro.getMarca()+"', MODELO='"+pro.getModelo()+"', DESCRIPCION='"+pro.getDescripcion()+"', COSTO_COMPRA='"+pro.getCosto_compra()+"', COSTO_VENTA='"+pro.getCosto_venta()+"', UBICACION='"+pro.getUbicacion()+"', CANTIDAD='"+pro.getCantidad()+"', COD_PROVEEDOR='"+pro.getCod_proveedor()+"' WHERE CODIGO='"+codigo+"'");
+					 stm.executeUpdate("update productos SET CODIGO='"+pro.getCodigo()+"', NOMBRE='"+pro.getNombre()+"',  MARCA='"+pro.getMarca()+"', MODELO='"+pro.getModelo()+"', DESCRIPCION='"+pro.getDescripcion()+"', COSTO_COMPRA='"+pro.getCosto_compra()+"', COSTO_VENTA='"+pro.getCosto_venta()+"', UBICACION='"+pro.getDepartamento()+"', CANTIDAD='"+pro.getCantidad()+"', COD_PROVEEDOR='"+pro.getCod_proveedor()+"' WHERE CODIGO='"+codigo+"'");
 					 new Mensaje().listo("El Producto Fue Actualiizado..", "Actualizado");	
 					 stm.close();
 				     }
@@ -215,12 +215,5 @@ Connection Conex;
 			e.printStackTrace();
 		    new Mensaje().error("Error Al Agregar la entrada del Producto", "Error");return false;}
 		
-	}
-	
-	
-	
-	
-	
-	
-	
+	}	
 }

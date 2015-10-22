@@ -122,7 +122,7 @@ public class Buscar_recepciones extends JDialog implements ActionListener,KeyLis
 			new Procesos_recepciones(txt_buscar.getText());
 			
 			
-		}else{new Mensaje().error("Debe Introducir datos para Buscar ","Error de Busqueda");}
+		}else{new Procesos_recepciones(txt_buscar.getText());}
 	}
 
 

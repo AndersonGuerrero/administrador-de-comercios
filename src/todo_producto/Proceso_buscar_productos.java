@@ -63,9 +63,10 @@ public class Proceso_buscar_productos extends Thread  {
 					p.setDescripcion(rs.getString(5));
 					p.setCosto_compra(rs.getString(6));
 					p.setCosto_venta(rs.getString(7));
-					p.setUbicacion(rs.getString(8));
+					p.setDepartamento(rs.getString(8));
 					p.setCantidad(rs.getString(9));
 					p.setCod_proveedor(rs.getString(10));
+					p.setFecha(rs.getString(11));
 					Buscar_Producto.listaa.add(p);
 					x++;
 					Buscar_Producto.barra_carga.setValue(x);
@@ -91,7 +92,8 @@ public class Proceso_buscar_productos extends Thread  {
 				Buscar_Producto.descripcion.setText("");
 				Buscar_Producto.costo_com.setText("");
 				Buscar_Producto.costo_vent.setText("");
-				Buscar_Producto.ubicacion.setText("");
+				Buscar_Producto.btnfecha.setText("");
+				Buscar_Producto.departamento.setText("");
 				Buscar_Producto.lista.setSelectedIndex(0);
 				Buscar_Producto.tipo_cant.setSelectedIndex(0);
 				
@@ -131,7 +133,7 @@ public class Proceso_buscar_productos extends Thread  {
 		vector[2]=Buscar_Producto.listaa.get(i).getDescripcion();
 		vector[3]=Buscar_Producto.listaa.get(i).getMarca();
 		vector[4]=Buscar_Producto.listaa.get(i).getModelo();
-		vector[5]=Buscar_Producto.listaa.get(i).getUbicacion();
+		vector[5]=Buscar_Producto.listaa.get(i).getDepartamento();
 		
 		Buscar_Producto.dtm.addRow(vector);
 		x++;

@@ -1,6 +1,7 @@
 package todo_producto;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -23,6 +24,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import datechooser.beans.DateChooserDialog;
 import funciones.Enfocar;
 import funciones.Fondo;
 import funciones.Mensaje;
@@ -40,10 +42,10 @@ public class Buscar_Producto extends JDialog implements ActionListener,KeyListen
 	public static JComboBox<String> lista,tipo_cant;
 	public static JScrollPane barratxt;
 	public static JTextArea descripcion;
-	public static JTextField codigo,nombre,marca,modelo,cantidad,costo_com,costo_vent,ubicacion;
+	public static JTextField codigo,nombre,marca,modelo,cantidad,costo_com,costo_vent,departamento;
 	public static JLabel codigol,nombrel,marcal,modelol,descripcionl,cantidadl,costo_coml,costo_ventl,ubicacionl,proveedorl;
 	public static JProgressBar barra_carga;
-	
+	public static JButton btnfecha;
 	public static LinkedList<Producto> listaa =new LinkedList<>();
 	
 	
@@ -52,14 +54,14 @@ public class Buscar_Producto extends JDialog implements ActionListener,KeyListen
 
 	JTextField txt_buscar;
 	Fondo panel;
-	JButton buscar,actualizar,eliminar;
+	JButton buscar,actualizar;
 	JPanel panel_datos;
 	JScrollPane barra;
 
 	//-------------------------------------------------------------
 	public static JTable tabla;
 	
-	public static String[] columnas={"Codigo","Nombre","Descripcion","Marca","Modelo","Ubicacion"};
+	public static String[] columnas={"Codigo","Nombre","Descripcion","Marca","Modelo","Departamento"};
 	
 	 public static String[][]filas={{""}};
 	
@@ -72,13 +74,10 @@ public class Buscar_Producto extends JDialog implements ActionListener,KeyListen
 	public Buscar_Producto()
 	{
       setLayout(null);
-	   
-      
-      
-      
 		descripcion=new JTextArea();
 		new Pintar_txtarea(descripcion);
 		barratxt=new JScrollPane(descripcion);
+		descripcion.disable();
 		
 		barratxt.setBounds(90, 150, 390, 50);
 		
@@ -96,6 +95,7 @@ public class Buscar_Producto extends JDialog implements ActionListener,KeyListen
 		lista.addItem("------------------------------------------");
 		lista.addItem("SIN PROVEEDOR");
 		new Conexion_productos().llenar_combo(lista);
+		lista.disable();
 		
 		codigol=new JLabel("Codigo:");
 		codigol.setBounds(15,25,100,20);
@@ -103,6 +103,7 @@ public class Buscar_Producto extends JDialog implements ActionListener,KeyListen
 		codigo= new JTextField();
 		codigo.setBounds(90,20,100,30);
 		new Pintar_txt(codigo);
+		codigo.disable();
 		
 		nombrel=new JLabel("Nombre:");
 		nombrel.setBounds(15,55,100,20);
@@ -110,6 +111,7 @@ public class Buscar_Producto extends JDialog implements ActionListener,KeyListen
 		nombre=new JTextField();
 		new Pintar_txt(nombre);
 		nombre.setBounds(90, 50, 100, 30);
+		nombre.disable();
 		
 		marcal=new JLabel("Marca:");
 		new Pintar_label(marcal);
@@ -117,6 +119,7 @@ public class Buscar_Producto extends JDialog implements ActionListener,KeyListen
 		marca=new JTextField();
 		new Pintar_txt(marca);
 		marca.setBounds(90, 80, 100, 30);
+		marca.disable();
 		
 		
 		modelol=new JLabel("Modelo:");
@@ -125,7 +128,7 @@ public class Buscar_Producto extends JDialog implements ActionListener,KeyListen
 		modelo=new JTextField();
 		new Pintar_txt(modelo);
 		modelo.setBounds(90, 110, 100, 30);
-		
+		modelo.disable();
 		
 		JLabel l=new JLabel("Bsf.");
 		l.setForeground(Color. gray);
@@ -143,7 +146,7 @@ public class Buscar_Producto extends JDialog implements ActionListener,KeyListen
 		costo_com=new JTextField();
 		new Pintar_txt(costo_com);
 		costo_com.setBounds(380, 20, 100, 30);
-		
+		costo_com.disable();
 		
 		
 		costo_ventl=new JLabel("Costo de Venta:");
@@ -152,35 +155,39 @@ public class Buscar_Producto extends JDialog implements ActionListener,KeyListen
 		costo_vent=new JTextField();
 		new Pintar_txt(costo_vent);
 		costo_vent.setBounds(380, 50, 100, 30);
+		costo_vent.disable();
 		
-		ubicacionl=new JLabel("Ubicacion:");
+		ubicacionl=new JLabel("Departamento:");
 		new Pintar_label(ubicacionl);
 		ubicacionl.setBounds(260,85,150,20);
-		ubicacion=new JTextField();
-		new Pintar_txt(ubicacion);
-		ubicacion.setBounds(380, 80, 50, 30);
-		
+		departamento=new JTextField();
+		new Pintar_txt(departamento);
+		departamento.setBounds(380, 80, 100, 30);
+		departamento.disable();
 		cantidadl=new JLabel("Cantidad:");
 		new Pintar_label(cantidadl);
 		cantidadl.setBounds(260,115,100,20);
 		cantidad=new JTextField();
 		new Pintar_txt(cantidad);
 		cantidad.setBounds(380, 110, 50, 30);
+		cantidad.disable();
 		
 		tipo_cant=new JComboBox<String>();
 		new Pintar_Combo(tipo_cant);
-		tipo_cant.setBounds(430,110,50,30);
+		tipo_cant.setBounds(430,110,60,30);
 		tipo_cant.addItem("---");
 		tipo_cant.addItem("UD");
 		tipo_cant.addItem("KG");
 		tipo_cant.addItem("LT");
 		tipo_cant.addItem("MT");
 		tipo_cant.addItem("DC");
+		tipo_cant.disable();
       
       
-		eliminar=new JButton("Eliminar");
-	    new Pintar_boton(eliminar);
-		eliminar.setBounds(240, 235, 100, 30);
+		btnfecha=new JButton("Fecha");
+	    new Pintar_boton(btnfecha);
+	    btnfecha.setBounds(240, 235, 150, 30);
+	    btnfecha.disable();
 	  
 	   actualizar=new JButton("Actualizar");
 	   new Pintar_boton(actualizar);
@@ -197,13 +204,12 @@ public class Buscar_Producto extends JDialog implements ActionListener,KeyListen
        panel_datos.setLayout(null);
        panel_datos.add(l);
        panel_datos.add(l2);
-       panel_datos.add(actualizar);
-       panel_datos.add(eliminar);
+       panel_datos.add(btnfecha);
        panel_datos.add(proveedorl);
        panel_datos.add(tipo_cant);
        panel_datos.add(descripcionl);panel_datos.add(barratxt);
        panel_datos.add(lista);
-       panel_datos.add(ubicacion);panel_datos.add(ubicacionl);
+       panel_datos.add(departamento);panel_datos.add(ubicacionl);
        panel_datos.add(costo_vent);panel_datos.add(costo_ventl);
        panel_datos.add(costo_com);panel_datos.add(costo_coml);
        panel_datos.add(cantidad);panel_datos.add(cantidadl);
@@ -244,7 +250,6 @@ public class Buscar_Producto extends JDialog implements ActionListener,KeyListen
 		setModal(true);
 		setLocationRelativeTo(this);
 		actualizar.addActionListener(this);	
-		eliminar.addActionListener(this);
 		txt_buscar.addKeyListener(this);
 		buscar.addActionListener(this);
 		marca.addKeyListener(this);
@@ -252,7 +257,7 @@ public class Buscar_Producto extends JDialog implements ActionListener,KeyListen
 		costo_com.addKeyListener(this);
 		costo_vent.addKeyListener(this);
 		cantidad.addKeyListener(this);
-		ubicacion.addKeyListener(this);
+		departamento.addKeyListener(this);
 		nombre.addKeyListener(this);
 		codigo.addKeyListener(this);
 		lista.addActionListener(this);
@@ -285,7 +290,7 @@ public class Buscar_Producto extends JDialog implements ActionListener,KeyListen
 						|| modelo.getText().equals("") || descripcion.getText().equals("") 
 						|| tipo_cant.getSelectedIndex()==0
 						|| costo_com.getText().equals("") || costo_vent.getText().equals("") 
-						|| ubicacion.getText().equals("") || cantidad.getText().equals("") 
+						|| departamento.getText().equals("") || cantidad.getText().equals("") 
 						|| lista.getSelectedIndex()==0)
 				{
 					new Mensaje().error("Debe Rellenar Todos los campos","Llene los Campos");
@@ -301,7 +306,7 @@ public class Buscar_Producto extends JDialog implements ActionListener,KeyListen
 					p.setModelo(modelo.getText());
 					p.setMarca(marca.getText());
 					p.setNombre(nombre.getText());
-					p.setUbicacion(ubicacion.getText());
+					p.setDepartamento(departamento.getText());
 					p.setDescripcion(descripcion.getText());
 					
 					try{
@@ -328,10 +333,9 @@ public class Buscar_Producto extends JDialog implements ActionListener,KeyListen
 			
 		}
 		else
-			if(r.getSource().equals(eliminar))
+			if(r.getSource().equals(btnfecha))
 			{
-			
-				if(tabla.getSelectedRow()>=0)
+				/*if(tabla.getSelectedRow()>=0)
 				{
 					new Mensaje().pregunta("Desea Eliminar el Producto "+dtm.getValueAt(tabla.getSelectedRow(),1)+"?", "Eliminacion");
 					if(Mensaje.resp)
@@ -347,12 +351,12 @@ public class Buscar_Producto extends JDialog implements ActionListener,KeyListen
 						descripcion.setText("");
 						costo_com.setText("");
 						costo_vent.setText("");
-						ubicacion.setText("");
+						departamento.setText("");
 						lista.setSelectedIndex(0);
 						tipo_cant.setSelectedIndex(0);
 					}
 				}
-				else{new Mensaje().error("Debe Seleccionar un Registro a Eliminar", "Error");}
+				else{new Mensaje().error("Debe Seleccionar un Registro a Eliminar", "Error");}*/
 			}
 		
 	}
@@ -398,11 +402,11 @@ public class Buscar_Producto extends JDialog implements ActionListener,KeyListen
 		if(p.getSource().equals(costo_vent))
 		{
 			if(p.getKeyCode()==KeyEvent.VK_ENTER){
-				new Enfocar(ubicacion);
+				new Enfocar(departamento);
 			}
 		}
 		else
-		if(p.getSource().equals(ubicacion))
+		if(p.getSource().equals(departamento))
 		{
 			if(p.getKeyCode()==KeyEvent.VK_ENTER){
 				new Enfocar(cantidad);
@@ -473,9 +477,9 @@ public class Buscar_Producto extends JDialog implements ActionListener,KeyListen
 			}
 		}
 		
-		if(t.getSource().equals(ubicacion))
+		if(t.getSource().equals(departamento))
 		{
-			if(ubicacion.getText().length()==6){t.consume();}
+			if(departamento.getText().length()==6){t.consume();}
 			char Cc=t.getKeyChar();
 			if((Cc<'0' || Cc>'9'))
 			{
@@ -526,8 +530,9 @@ public class Buscar_Producto extends JDialog implements ActionListener,KeyListen
 		
 		if(txt_buscar.getText().equals(""))
 		{
-			new Mensaje().error("Debe Introducir datos para Buscar", "Error al Buscar");
-			new Enfocar(txt_buscar);
+			barra_carga.setValue(0);
+		    new Proceso_buscar_productos(txt_buscar.getText());
+            new Enfocar(txt_buscar);	
 		}
 		
 		else
@@ -573,6 +578,7 @@ public class Buscar_Producto extends JDialog implements ActionListener,KeyListen
 		      {
 		    	 codigo.setText(listaa.get(i).getCodigo());
 		    	 nombre.setText(listaa.get(i).getNombre());
+		    	 btnfecha.setText(listaa.get(i).getFecha());
 		    	 descripcion.setText(listaa.get(i).getDescripcion());
 		    	 marca.setText(listaa.get(i).getMarca());
 		    	 modelo.setText(listaa.get(i).getModelo());
@@ -580,7 +586,7 @@ public class Buscar_Producto extends JDialog implements ActionListener,KeyListen
 	             costo_vent.setText(listaa.get(i).getCosto_venta()); 
 		    	 
 		    	 
-		    	  ubicacion.setText(listaa.get(i).getUbicacion());
+	             departamento.setText(listaa.get(i).getDepartamento());
 		    	 
 		    	 
 		    	 String[] x=listaa.get(i).getCantidad().split(":");
@@ -621,22 +627,12 @@ public class Buscar_Producto extends JDialog implements ActionListener,KeyListen
 		    	 
 		    	 break;
 		      }
-		 
 			}
 		new Enfocar(codigo);
-		}
-		
+		}	
 	}
-
-
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
-	
-	
-	
+		// TODO Auto-generated method stub	
+	}	
 }

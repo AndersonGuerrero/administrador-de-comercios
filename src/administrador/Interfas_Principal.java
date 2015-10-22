@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -20,14 +21,12 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 import javax.swing.Timer;
+
 import calculadora.Calculadora;
 import calendario.Calendario;
-
 import Todo_recepciones.Buscar_recepciones;
-
 import funciones.Mensaje;
 import funciones.Panel;
-
 import todo_Facturas.Buscar_facturas;
 import todo_Facturas.Facturacion;
 import todo_clientes.Buscar_cliente;
@@ -41,14 +40,6 @@ import todo_proveedor.Buscar_proveedor;
 import todo_proveedor.Nuevo_Proveedor;
 
 public class Interfas_Principal extends JFrame implements ActionListener,KeyListener{
-	/**
-     Autor Anderson Guerrero
-     C.I 24390246
-	 20 Anños de edad 
-	 Ingenieria Informatica.
-	 * 
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	Panel panelt=new Panel();
 	String iva="";
@@ -70,7 +61,12 @@ public class Interfas_Principal extends JFrame implements ActionListener,KeyList
 	SimpleDateFormat dma = new SimpleDateFormat("dd:mm:yyyy");
 	JMenu archivo,inventario,proveedores,clientes,facturas,configuracion,cuentas,consultas,herramientas;
 	JMenuBar barrademenu;
-	JMenuItem Listado_por_pro,Listado_por_ubi,calendario,Entradas,calculadora,facturacion,buscar_recepciones,opciones,nuevo_producto,buscar_editar_p,salir,buscar_f,nuevo_cliente,buscar_editar_c,nuevo_proveedor,buscar_proveedor,ganancias_Inversiones;
+	JMenuItem Listado_por_pro,Listado_por_ubi,
+	calendario,Entradas,calculadora,facturacion,
+	buscar_recepciones,opciones,nuevo_producto,
+	buscar_editar_p,salir,buscar_f,nuevo_cliente,
+	buscar_editar_c,nuevo_proveedor,buscar_proveedor,
+	ganancias_Inversiones,cerrar_session;
     Confing c;
 	Usuarios user;
 	boolean fact,config;
@@ -85,18 +81,18 @@ public class Interfas_Principal extends JFrame implements ActionListener,KeyList
 		setSize(java.awt.Toolkit.getDefaultToolkit().getScreenSize().width,java.awt.Toolkit.getDefaultToolkit().getScreenSize().height);
 		
 		setResizable(false);
-	    icono_consultas=new ImageIcon("Images//consultas.png");
-		fondo=new ImageIcon("Images//fondo.jpg").getImage();
-		incono=new ImageIcon("Images//logo.gif").getImage();
-		icono_clientes=new ImageIcon("Images//clientes.png");
-		icono_cuentas=new ImageIcon("Images//cuentas.png");
-		icono_config=new ImageIcon("Images//configuracion.png");
-		icono_salir=new ImageIcon("Images//salir.png");
-		icono_inventario=new ImageIcon("Images//inventario.png");
-		icono_proveedores=new ImageIcon("Images//proveedores.png");
-		icono_facturas=new ImageIcon("Images//facturacion.jpg");
-		icono_select=new ImageIcon("Images//select.png");
-		icono_herramientas=new ImageIcon("Images//herramientas.png");
+	    icono_consultas=new ImageIcon("Images" + Inicio.url_sistema + "consultas.png");
+		fondo=new ImageIcon("Images" + Inicio.url_sistema + "fondo.jpg").getImage();
+		incono=new ImageIcon("Images" + Inicio.url_sistema + "logo.gif").getImage();
+		icono_clientes=new ImageIcon("Images" + Inicio.url_sistema + "clientes.png");
+		icono_cuentas=new ImageIcon("Images" + Inicio.url_sistema + "cuentas.png");
+		icono_config=new ImageIcon("Images" + Inicio.url_sistema + "configuracion.png");
+		icono_salir=new ImageIcon("Images" + Inicio.url_sistema + "salir.png");
+		icono_inventario=new ImageIcon("Images" + Inicio.url_sistema + "inventario.png");
+		icono_proveedores=new ImageIcon("Images" + Inicio.url_sistema + "proveedores.png");
+		icono_facturas=new ImageIcon("Images" + Inicio.url_sistema + "facturacion.jpg");
+		icono_select=new ImageIcon("Images" + Inicio.url_sistema + "select.png");
+		icono_herramientas=new ImageIcon("Images" + Inicio.url_sistema + "herramientas.png");
 		setIconImage(incono);
 		
 		panelt.setbacgroundimage(fondo);
@@ -115,7 +111,7 @@ public class Interfas_Principal extends JFrame implements ActionListener,KeyList
 	timpo.setRepeats(true);
 	timpo.start();
 		
-		archivo=new JMenu("Archivo    ");
+		archivo=new JMenu(Inicio.users.getXusuario()+"    ");
 		consultas=new JMenu("Consultas    ");
         consultas.setIcon(icono_consultas);
 		herramientas=new JMenu("Herramientas    ");
@@ -144,7 +140,7 @@ public class Interfas_Principal extends JFrame implements ActionListener,KeyList
 		
 		//<-------------------------------------->Menu de Opciones de Consultas<--------------------------------->
 		
-		Listado_por_ubi=new JMenuItem("Listado por Ubicacion ");
+		Listado_por_ubi=new JMenuItem("Listado por Departamento ");
 		Listado_por_ubi.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_U ,ActionEvent.CTRL_MASK));
 		Listado_por_ubi.setIcon(icono_select);
 		
@@ -195,6 +191,10 @@ public class Interfas_Principal extends JFrame implements ActionListener,KeyList
 		salir=new JMenuItem("Salir  Esc");
 		
         salir.setIcon(icono_salir);
+        
+        cerrar_session=new JMenuItem("Cerrar Sesion");
+		
+        cerrar_session.setIcon(icono_salir);
       
 		buscar_f=new JMenuItem("Buscar",KeyEvent.VK_F8);
 		buscar_f.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F8 ,ActionEvent.CTRL_MASK));
@@ -203,7 +203,6 @@ public class Interfas_Principal extends JFrame implements ActionListener,KeyList
 
 		//------------------------------------->CONSULTAS<------------------------------------------------->
 		consultas.add(Listado_por_ubi);
-		consultas.add(Listado_por_pro);
 		//------------------------------------->CONSULTAS<------------------------------------------------->
 		
 		
@@ -223,6 +222,7 @@ public class Interfas_Principal extends JFrame implements ActionListener,KeyList
 		clientes.add(buscar_editar_c);
 
 		barrademenu.add(archivo);
+		archivo.add(cerrar_session);
 		archivo.add(salir);
         ivav=iva;
         
@@ -251,6 +251,7 @@ public class Interfas_Principal extends JFrame implements ActionListener,KeyList
 		addKeyListener(this);
 		facturacion.addActionListener(this);
 		salir.addActionListener(this);
+		cerrar_session.addActionListener(this);
 		opciones.addActionListener(this);
 		calculadora.addActionListener(this);
 		calendario.addActionListener(this);
@@ -303,7 +304,7 @@ public void actionPerformed(ActionEvent a) {
 		else
 		if(a.getSource().equals(opciones))
 		{
-			new Configuracion();
+			new Loguin_confg();
 		}
 		else	
 	if(a.getSource().equals(Entradas))
@@ -314,10 +315,14 @@ public void actionPerformed(ActionEvent a) {
 	}
 	else if(a.getSource().equals(Listado_por_ubi))
 	{
-		new Mensaje().inpout("Introduzca el numero de Ubicacion a Imprimir ", "Listado de por Ubicacion", "numero");
-		if(Mensaje.resp_inpout)
+		JComboBox<String> dato_select =new JComboBox<String>();
+		dato_select.addItem("--");
+		dato_select.addItem("Topografia");
+		dato_select.addItem("Constructora");
+		dato_select.addItem("Agricultura");
+		new Mensaje().select("Introduzca el departamento", "Listado de por Departamento", "Departamento", dato_select);
+		if(Mensaje.resp_select)
 		{
-			
 			new Imprimir_lista_por_ubi(Mensaje.dato);
 		}
 	}
@@ -329,6 +334,14 @@ public void actionPerformed(ActionEvent a) {
 	if(a.getSource().equals(salir)){ new Mensaje().pregunta("Desea Salir del Sistema","Salir");
 	if(Mensaje.resp)
 	{new Conexion().close(); System.exit(0);}
+	}
+	else if(a.getSource().equals(cerrar_session)){ new Mensaje().pregunta("Desea Salir de la Sesion.?","Salir");
+	if(Mensaje.resp)
+	{
+	new Conexion().close();
+	this.dispose();
+	Inicio.main(null);
+	}
 	}
 	
 	else

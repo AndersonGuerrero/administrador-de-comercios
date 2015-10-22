@@ -10,10 +10,12 @@ import java.awt.event.KeyListener;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.LinkedList;
+
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
@@ -36,16 +38,16 @@ public class Configuracion implements ActionListener,KeyListener {
 
 	JTabbedPane paneles;
 	Fondo gestion_usuarios,gestion_sistema;
-	JLabel direccionl,rifl,nombrel,nombre_userl,correol,telefonol1,telefonol2,telefonol3,ival,porcen,seleccione,pwl,privilegios;
+	JLabel direccionl,rifl,nombrel,nombre_userl,correol,telefonol1,telefonol2,telefonol3,ival,porcen,seleccione,pwl,pwl2,privilegios;
 	JTextField rif,nombre,nombre_user,correo,telefono1,telefono2,telefono3,iva;
-	JPasswordField pw;
+	JPasswordField pw, pw2;
 	JCheckBox facturas,inventario,proveedores,facturacion,clientes,conf;
 	JButton aplicar,limpiar,aplicar_user,eliminar_user;
     JScrollPane ecrol,escrol2;
     JTextArea direccion;
 	JComboBox<String> lista,usuarios;
 	Dialogo d =new Dialogo("Configuracion",600,350);
-	
+	Boolean is_aroba = false;
 	static Confing c;
 
 	 LinkedList<String[]> lista_usuarios;
@@ -151,14 +153,13 @@ public class Configuracion implements ActionListener,KeyListener {
 		correol.setBounds(10,110,100,20);
 		gestion_sistema.add(correol);
 		
+		if (c.getCorrero().indexOf("@") == -1){
+			is_aroba=false;
+		}else{
+			is_aroba=true;
+		}
 		
-		
-		String separador[]=c.getCorrero().split("@");
-		
-		
-		
-		
-		correo=new JTextField(separador[0]);
+		correo=new JTextField(c.getCorrero());
 		correo.setBounds(150,110,200,30);
 		gestion_sistema.add(correo);
 		
@@ -166,7 +167,7 @@ public class Configuracion implements ActionListener,KeyListener {
 		porcen=new JLabel("@");
 		porcen.setBounds(350,115,50,20);
 		porcen.setFont(new Font(null,0,18));
-		gestion_sistema.add(porcen);
+
 		
 		lista =new JComboBox<String>();
 		lista.addItem("Seleccione");
@@ -175,14 +176,8 @@ public class Configuracion implements ActionListener,KeyListener {
 		lista.addItem("Hotmail.es");
 		lista.addItem("Yahoo.es");
 		lista.setBounds(370,110,120,30);
-		gestion_sistema.add(lista);
 		
-		
-		
-		if(lista.getItemAt(1).toString().equals(separador[1])){lista.setSelectedIndex(1);}
-		else if(lista.getItemAt(2).toString().equals(separador[1])){lista.setSelectedIndex(2);}
-		else if(lista.getItemAt(3).toString().equals(separador[1])){lista.setSelectedIndex(3);}
-		else if(lista.getItemAt(4).toString().equals(separador[1])){lista.setSelectedIndex(4);}
+	
 		lista.setCursor(new Cursor(12));
 		limpiar.setCursor(new Cursor(12));
 		aplicar.setCursor(new Cursor(12));
@@ -220,13 +215,21 @@ public class Configuracion implements ActionListener,KeyListener {
 		nombre_user.setBounds(150,60,180,30);
 		gestion_usuarios.add(nombre_user);
 		
-		pwl=new JLabel("Contraseña:");
+		pwl=new JLabel("Password:");
 		pwl.setBounds(10,90,150,20);
 		gestion_usuarios.add(pwl);
 		
 		pw=new JPasswordField();
 		pw.setBounds(160,90,80,20);
 		gestion_usuarios.add(pw);
+		
+		pwl2=new JLabel("Config Password:");
+		pwl2.setBounds(10,120,150,20);
+		gestion_usuarios.add(pwl2);
+		
+		pw2=new JPasswordField();
+		pw2.setBounds(160,120,80,20);
+		gestion_usuarios.add(pw2);
 		
 		
 		privilegios=new JLabel("Privilegios");
@@ -298,6 +301,7 @@ public class Configuracion implements ActionListener,KeyListener {
 		new Pintar_label(nombrel);
 		new Pintar_label(porcen);
 		new Pintar_label(pwl);
+		new Pintar_label(pwl2);
 		new Pintar_label(rifl);
 		new Pintar_label(seleccione);
 		new Pintar_label(telefonol1);
@@ -432,37 +436,28 @@ if(arg0.getSource().equals(pw)){
 		}
 		
 		
-		
+		char x= arg0.getKeyChar();
 		if(arg0.getSource().equals(telefono1)){
-			
-			if(telefono1.getText().length()>=12){arg0.consume();}
-			char ar1 = arg0.getKeyChar();
-			
-			if((ar1<'0' || ar1>'9')          
-				    && ar1 !='-'
-				) {arg0.consume();}
+			if(telefono1.getText().length()==16){arg0.consume();}
+			if((x<'0' || x>'9') && x!='-' && x!='.'){arg0.consume();}
 		}
-		
-		if(arg0.getSource().equals(telefono2)){if(telefono2.getText().length()>=12){ arg0.consume();}
-		char ar1 = arg0.getKeyChar();
-		
-		if((ar1<'0' || ar1>'9')          
-			    && ar1 !='-'
-			) {arg0.consume();}
+		else if(arg0.getSource().equals(telefono2)){
+			if(telefono2.getText().length()==16){arg0.consume();}
+			if((x<'0' || x>'9') && x!='-' && x!='.'){arg0.consume();}
 		}
-		
-		if(arg0.getSource().equals(telefono3)){if(telefono3.getText().length()>=12){ arg0.consume();}
-		char ar1 = arg0.getKeyChar();
-		
-		if((ar1<'0' || ar1>'9')          
-			    && ar1 !='-'
-			) {arg0.consume();}
+		else if(arg0.getSource().equals(telefono3)){
+			if(telefono3.getText().length()==16){arg0.consume();}
+			if((x<'0' || x>'9') && x!='-' && x!='.'){arg0.consume();}
 		}
-		
-		
+
 		if(arg0.getSource().equals(correo)){
-			if(correo.getText().length()>=40){ arg0.consume();}
 			
+			if(correo.getText().length()==100){arg0.consume();}
+			char ar = arg0.getKeyChar();
+			if(ar == '@' && is_aroba == false )          
+			 {
+				is_aroba=true;
+			 }else if (correo.getText().indexOf("@") != -1 && ar == '@' && is_aroba == true) {arg0.consume();}
 			}
 		
 		if(arg0.getSource().equals(nombre)){
@@ -530,11 +525,13 @@ if(arg0.getSource().equals(pw)){
 				{
 					nombre_user.setText(lista_usuarios.get(i)[1]);
 					pw.setText(lista_usuarios.get(i)[2]);
+					pw2.setText(lista_usuarios.get(i)[9]);
 				
 					if(Conexion.user.getXusuario().equals(lista_usuarios.get(i)[1]))
 					{
 						pw.setEditable(true);
-					}else{pw.setEditable(false);}
+						pw2.setEditable(true);
+					}else{pw.setEditable(false);pw2.setEditable(false);}
 					
 					
 					eliminar_user.setVisible(true);
@@ -560,15 +557,22 @@ if(arg0.getSource().equals(pw)){
 
 			if(nombre.getText().equals("") ||
 			   correo.getText().equals("") ||
+			   is_aroba == false ||
+			   telefono1.getText().length()<=10 ||
+			   telefono2.getText().length()<=10 ||
+			   telefono3.getText().length()<=10 ||
+			   correo.getText().indexOf("@") == -1 ||
 			   rif.getText().equals("") || 
-			   telefono1.getText().equals("")){
-				new Mensaje().error("No Deje campos vacios", "Error");
+			   telefono1.getText().equals("") ||
+			   telefono2.getText().equals("") ||
+			   telefono3.getText().equals("")){
+				new Mensaje().error("No Deje campos vacios o Invalidos", "Error");
 			    }else{
 			    	
 			    	BigDecimal IVA=new BigDecimal(iva.getText()).setScale(2, RoundingMode.HALF_EVEN);
 			    	
 			    Conexion.conf.setRif(rif.getText());
-			    Conexion.conf.setCorrero(correo.getText()+"@"+lista.getSelectedItem().toString());
+			    Conexion.conf.setCorrero(correo.getText());
 			    Conexion.conf.setDireccion(direccion.getText());
 			    Conexion.conf.setIva(""+IVA);
 			    iva.setText(Conexion.conf.getIva());
@@ -576,7 +580,7 @@ if(arg0.getSource().equals(pw)){
 			    Conexion.conf.setTelefono1(telefono1.getText());
 			    Conexion.conf.setTelefono2(telefono2.getText());
 			    Conexion.conf.setTelefono3(telefono3.getText());
-			    new Conexion().actualizar_datos(nombre.getText(), correo.getText()+"@"+lista.getSelectedItem().toString(), rif.getText(), direccion.getText(), telefono1.getText(), telefono2.getText(), telefono3.getText(),IVA+"");
+			    new Conexion().actualizar_datos(nombre.getText(), correo.getText(), rif.getText(), direccion.getText(), telefono1.getText(), telefono2.getText(), telefono3.getText(),IVA+"");
 			    	 }
 		}
 		else
@@ -590,6 +594,7 @@ if(arg0.getSource().equals(pw)){
 			telefono2.setText("");
 			telefono3.setText("");
 			direccion.setText("");
+			is_aroba=false;
 			lista.setSelectedIndex(0);
 			new Enfocar(rif);
 		}
@@ -627,12 +632,12 @@ if(arg0.getSource().equals(pw)){
 				if(usuarios.getSelectedItem().toString().equals("Nuevo Usuario"))
 				{
 					
-					if(nombre.getText().equals("") || pw.getText().equals(""))
+					if(nombre.getText().equals("") || pw.getText().equals("") || pw2.getText().equals(""))
 					{
 						new Mensaje().listo("No deje Campos Vacios..", "Introduzca lo solicitado");
 					}else{
 					
-						String vector[]=new String[9];
+						String vector[]=new String[10];
 						vector[1]=nombre_user.getText().toUpperCase();
 						vector[2]=pw.getText();
 						vector[3]=boleano(inventario);
@@ -641,6 +646,7 @@ if(arg0.getSource().equals(pw)){
 						vector[6]=boleano(clientes);
 						vector[7]=boleano(conf);
 						vector[8]=boleano(proveedores);
+						vector[9]=pw2.getText();
 						lista_usuarios.add(vector);
 						usuarios.addItem(nombre_user.getText());
 						new Conexion().Nuevo_usuario(vector);
@@ -658,7 +664,7 @@ if(arg0.getSource().equals(pw)){
 						if(lista_usuarios.get(i)[1].toString().equals(usuarios.getSelectedItem().toString()))
 						{
 							
-							String vector[]=new String[9];
+							String vector[]=new String[10];
 							String anterior=usuarios.getSelectedItem().toString();
 							
 							vector[1]=nombre_user.getText().toUpperCase();
@@ -669,11 +675,12 @@ if(arg0.getSource().equals(pw)){
 							vector[6]=boleano(clientes);
 							vector[7]=boleano(conf);
 							vector[8]=boleano(proveedores);
+							vector[9]=pw2.getText();
 							lista_usuarios.set(i, vector);
 							
 							new Conexion().actualizar_users(vector,anterior.toString());
-							
-							new Mensaje().listo("El Usuario "+anterior+" ha Sido Actualizado.." ,"Actualizado..");
+							Inicio.users.setXclaveconfg(vector[9]);
+							new Mensaje().listo("El Usuario "+anterior+" ha sido Actualizado.." ,"Actualizado..");
 							usuarios.removeItemAt(usuarios.getSelectedIndex());
 							usuarios.addItem(lista_usuarios.get(i)[1]);
 							usuarios.setSelectedItem(lista_usuarios.get(i)[1]);

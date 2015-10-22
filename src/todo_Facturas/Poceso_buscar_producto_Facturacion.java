@@ -58,7 +58,7 @@ public class Poceso_buscar_producto_Facturacion extends Thread  {
 					p.setDescripcion(rs.getString(5));
 					p.setCosto_compra(rs.getString(6));
 					p.setCosto_venta(rs.getString(7));
-					p.setUbicacion(rs.getString(8));
+					p.setDepartamento(rs.getString(8));
 					p.setCantidad(rs.getString(9));
 					p.setCod_proveedor(rs.getString(10));
 				    Facturacion.lista_taba1.add(p);
@@ -113,7 +113,7 @@ public class Poceso_buscar_producto_Facturacion extends Thread  {
 		
 		vectorx[6]=Facturacion.lista_taba1.get(i).getCosto_compra();
 		vectorx[7]=Facturacion.lista_taba1.get(i).getCosto_venta();
-		vectorx[8]=Facturacion.lista_taba1.get(i).getUbicacion();
+		vectorx[8]=Facturacion.lista_taba1.get(i).getDepartamento();
 		
 		Facturacion.dtm1.addRow(vectorx);
 		

@@ -44,7 +44,7 @@ public class Entradas extends JDialog implements ActionListener {
 	public static JProgressBar barra_progreso;
     public static JTable tabla;
 	String x[];
-	public static String[] columnas={"Codigo","Nombre","Descripcion","Marca","Modelo","Ubicacion"};
+	public static String[] columnas={"Codigo","Nombre","Descripcion","Marca","Modelo","Departamento"};
 	
 	 public static String[][]filas={{""}};
 	

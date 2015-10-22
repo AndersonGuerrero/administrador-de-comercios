@@ -22,6 +22,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import administrador.Inicio;
 import funciones.Dialogo;
 import funciones.Enfocar;
 import funciones.Fondo;
@@ -48,7 +49,7 @@ public class Buscar_proveedor implements ActionListener,KeyListener,MouseListene
 	Fondo d;
 	int pocicion;
 	static int eliminacion=0;
-
+	Boolean is_aroba = false;
 	JTextField txt_buscar;
 	JScrollPane barra;
 
@@ -79,13 +80,13 @@ public class Buscar_proveedor implements ActionListener,KeyListener,MouseListene
        
 	
 	mas=new JLabel();
-	icono=new ImageIcon("Images\\mas.png");
+	icono=new ImageIcon("Images"+Inicio.url_sistema+"mas.png");
 	mas.setIcon(icono);
 	mas.setBounds(680,53, 30,30);
 	mas.setCursor(new Cursor(12));
 	
 	menos=new JLabel();
-	icono2=new ImageIcon("Images\\menos.png");
+	icono2=new ImageIcon("Images"+Inicio.url_sistema+"menos.png");
 	menos.setIcon(icono2);
 	menos.setBounds(720,62, 50,8);
 	menos.setCursor(new Cursor(12));
@@ -184,8 +185,6 @@ public class Buscar_proveedor implements ActionListener,KeyListener,MouseListene
 	d.add(nombrel);
 	d.add(correo);
 	d.add(correol);
-	d.add(lista_correo);
-	d.add(aroba);
 	d.add(codigo_poastal);
 	d.add(codigo_poastall);
 	d.add(telefonos);
@@ -287,6 +286,7 @@ public class Buscar_proveedor implements ActionListener,KeyListener,MouseListene
 					telefonos.removeAllItems();
 					codigo_poastal.setText("");
 					fax.setText("");
+					is_aroba=false;
 					vendedor.setText("");
 				}
 			}
@@ -297,8 +297,8 @@ public class Buscar_proveedor implements ActionListener,KeyListener,MouseListene
 			if(g.getSource().equals(actualizar))
 			{
 			
-				if(nombre.getText().equals("") || id_proveedor.getText().equals("") || direccion.getText().equals("") || telefonos.getItemCount()<=0 || lista_correo.getSelectedIndex()==0
-						|| vendedor.getText().equals("") || fax.getText().equals("") || codigo_poastal.getText().equals("") || correo.getText().equals(""))
+				if(is_aroba==false || nombre.getText().equals("") || id_proveedor.getText().equals("") || direccion.getText().equals("") || telefonos.getItemCount()<=0 ||
+				  vendedor.getText().equals("") || fax.getText().equals("") || codigo_poastal.getText().equals("") || correo.getText().equals(""))
 				{
 					new Mensaje().error("No Pueden Ser Actualizados los Campos Vacios ", "Introduzca los Datos");
 				}
@@ -311,7 +311,7 @@ public class Buscar_proveedor implements ActionListener,KeyListener,MouseListene
 					p1.setId(id_proveedor.getText());
 					p1.setNombre(nombre.getText());
 					p1.setDireccion(direccion.getText());
-					p1.setCorrero(correo.getText()+"@"+lista_correo.getSelectedItem().toString());
+					p1.setCorrero(correo.getText());
 					p1.setCodigo_postal(codigo_poastal.getText());
 					p1.setFax(fax.getText());
 					p1.setNombre_vendedor(vendedor.getText());
@@ -367,19 +367,16 @@ public class Buscar_proveedor implements ActionListener,KeyListener,MouseListene
 		    	 fax.setText(lista_principal.get(i).getFax());
 		    	 vendedor.setText(lista_principal.get(i).getNombre_vendedor());
 		    	 telefonos.removeAllItems();
-		    	 
+		    	 correo.setText(lista_principal.get(i).getCorrero());
+		    	 if ( correo.getText().indexOf("@") != -1){
+		    		 is_aroba=true;
+		    	 }else{
+		    		 is_aroba=false;
+		    	 }
 		    	 for(int j=0;j<lista_principal.get(i).getTelefono_size();j++)
 		    	 {
 		    	 telefonos.addItem(lista_principal.get(i).getTelefono(j));
-		    	 }
-		    	 String[] x=lista_principal.get(i).getCorrero().split("@");
-		    	 correo.setText(x[0]);
-		    	 if(x[1].equals("gmail.com")){lista_correo.setSelectedItem("gmail.com");}
-		    	 else
-		    		 if(x[1].equals("hotmail.com")){lista_correo.setSelectedItem("hotmail.com");}
-		    		     else
-		    		    	 if(x[1].equals("yahoo.es")){lista_correo.setSelectedItem("yahoo.es");}
-		    	 
+		    	 } 
 		    	pocicion=i;
 		    	 break;
 		      }
@@ -453,7 +450,7 @@ public class Buscar_proveedor implements ActionListener,KeyListener,MouseListene
 	public void keyTyped(KeyEvent k) {
 		
 		
-        if(k.getSource().equals(txt_buscar)){
+	if(k.getSource().equals(txt_buscar)){
 			
 			char x=k.getKeyChar();
 			if(x!=KeyEvent.VK_SPACE && x!=KeyEvent.VK_BACK_SPACE && x!=KeyEvent.VK_ENTER){
@@ -474,27 +471,33 @@ public class Buscar_proveedor implements ActionListener,KeyListener,MouseListene
 		
 		
 		
-		if(k.getSource().equals(nombre))
+        else if(k.getSource().equals(nombre))
 		{
 			if(nombre.getText().length()==20){k.consume();}
 		}
 		
-		if(k.getSource().equals(fax))
+		else if(k.getSource().equals(fax))
 		{
 			if(fax.getText().length()==30){k.consume();}
 		}
 		
-		if(k.getSource().equals(id_proveedor))
+		else if(k.getSource().equals(id_proveedor))
 		{
 			if(id_proveedor.getText().length()==20){k.consume();}
 		}
 		
-		if(k.getSource().equals(correo))
+		else if(k.getSource().equals(correo))
 		{
-			if(correo.getText().length()==30){k.consume();}
+			if(correo.getText().length()==100){k.consume();}
+			char ar = k.getKeyChar();
+			if(ar == '@' && is_aroba == false )          
+			 {
+				is_aroba=true;
+			 }else if ( correo.getText().indexOf("@")!= -1 && ar == '@' && is_aroba == true) {k.consume();}
+				 
 		}
 
-		if(k.getSource().equals(codigo_poastal))
+		else if(k.getSource().equals(codigo_poastal))
 		{
 			char ar = k.getKeyChar();
 			if(ar<'0' || ar>'9')          
@@ -504,29 +507,18 @@ public class Buscar_proveedor implements ActionListener,KeyListener,MouseListene
 		}
 		
 		
-		if(k.getSource().equals(vendedor))
+		else if(k.getSource().equals(vendedor))
 		{
 			if(vendedor.getText().length()==20){k.consume();}
 		}
 
 
 		
-		if(k.getSource().equals(nombre) || k.getSource().equals(vendedor)){
+		else if(k.getSource().equals(nombre) || k.getSource().equals(vendedor)){
 		
 			char ar = k.getKeyChar();
 		
-		if((ar<'a' || ar>'z')&& (ar<'A' || ar>'Z')&& ar!=KeyEvent.VK_SPACE && ar !='á'           
-			    && ar !='é'
-			    && ar !='.'
-			    && ar !='-'
-			    && ar !='í'            
-			    && ar !='ó'           
-			    && ar !='ú'   
-			    && ar !='Á'           
-			    && ar !='É'            
-			    && ar !='Í'            
-			    && ar !='Ó'           
-			    && ar !='Ú') {k.consume();}}
+		if((ar<'a' || ar>'z')&& (ar<'A' || ar>'Z')&& ar!=KeyEvent.VK_SPACE) {k.consume();}}
 		
 	}
 	
@@ -564,8 +556,31 @@ public class Buscar_proveedor implements ActionListener,KeyListener,MouseListene
 	{
 		if(txt_buscar.getText().equals(""))
 		{
-			new Mensaje().error("Debe Introducir datos para Buscar", "Error al Buscar");
-			new Enfocar(txt_buscar);
+			 LinkedList<Proveedor> lista =new LinkedList<>();
+			 lista= new Conexion_proveedor().buscar(txt_buscar.getText());
+			
+			 if(lista.size()<=0)
+			{
+				new Mensaje().error("No se han encontrado registros","No encontrado" );
+				id_proveedor.setText("");
+				nombre.setText("");
+				direccion.setText("");
+				correo.setText("");
+				telefonos.removeAllItems();
+				codigo_poastal.setText("");
+				fax.setText("");
+				vendedor.setText("");
+				lista_correo.setSelectedIndex(0);
+				int x=dtm.getRowCount();
+				for(int i=0;i<x;i++)
+				{
+					dtm.removeRow(0);
+				}
+			}
+			else
+			{
+				agregar(lista);
+			}
 		}
 		else
 		{

@@ -55,11 +55,11 @@ JButton buscar,buscar_c,agregar_a_f,eliminar,facturar;
 JTextField txtbuscar,clientetxt,cant;
 JLabel hora,clientel,cedulal,nombrel,apellidol,titulo,subtotall,totall,ival,tipo_pago,rif,usuariol,cantl;
 public static JTable tabla1,tabla2;
- static String[] columnas1={"CODIGO","NOMBRE","MARCA","MODELO","DESCRIPCION","CANT_EX","COSTO COMPRA","COSTO","UBICACION"};
+ static String[] columnas1={"CODIGO","NOMBRE","MARCA","MODELO","DESCRIPCION","CANT_EX","COSTO COMPRA","COSTO","DEPARTAMENTO"};
  static String [][] filas1={{""}};
 public static DefaultTableModel dtm1=new DefaultTableModel(filas1,columnas1);
 
-static String[] columnas2={"CANTIDAD","CODIGO","NOMBRE","MARCA","MODELO","DESCRIPCION","UBICACION","TOTAL UD","TOTAL"};
+static String[] columnas2={"CANTIDAD","CODIGO","NOMBRE","MARCA","MODELO","DESCRIPCION","DEPARTAMENTO","TOTAL UD","TOTAL"};
 static String [][] filas2={{""}};
 public static DefaultTableModel dtm2=new DefaultTableModel(filas2,columnas2);
 
@@ -248,7 +248,7 @@ ival.setBounds(240,500,200,30);
 	    JScrollPane escrol2=new JScrollPane(tabla2);
 		escrol2.setBounds(0,350,990,150);
 		
-		//-----------------------------tamaño de las columnas------------------------------------------------------------------
+		//-----------------------------tamaï¿½o de las columnas------------------------------------------------------------------
 		TableColumn columna= tabla1.getColumn("DESCRIPCION");
 		columna.setPreferredWidth(200);
 		
@@ -258,10 +258,10 @@ ival.setBounds(240,500,200,30);
 		TableColumn columna4= tabla1.getColumn("COSTO");
 		columna4.setPreferredWidth(20);
 		
-		TableColumn columna1= tabla1.getColumn("UBICACION");
+		TableColumn columna1= tabla1.getColumn("DEPARTAMENTO");
 		columna1.setPreferredWidth(20);
 		
-		TableColumn columna2= tabla2.getColumn("UBICACION");
+		TableColumn columna2= tabla2.getColumn("DEPARTAMENTO");
 		columna2.setPreferredWidth(20);
 		
 		

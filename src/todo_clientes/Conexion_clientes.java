@@ -61,10 +61,10 @@ public class Conexion_clientes {
 			{
 				Cliente c=new Cliente();
 				
-				c.setNombre(rs.getString(2));
-				c.setApellido(rs.getString(3));
-				c.setRif(rs.getString(1));
-				c.setDireccion(rs.getString(4));
+				c.setNombre(rs.getString("NOMBRE"));
+				c.setApellido(rs.getString("APELLIDO"));
+				c.setRif(rs.getString("CEDULA"));
+				c.setDireccion(rs.getString("DIRECCION"));
 				lista.add(c);
 			}
 			
@@ -89,10 +89,10 @@ public class Conexion_clientes {
 			{
 				Cliente c=new Cliente();
 				
-				c.setNombre(rs.getString(2));
-				c.setApellido(rs.getString(3));
-				c.setRif(rs.getString(1));
-				c.setDireccion(rs.getString(4));
+				c.setNombre(rs.getString("NOMBRE"));
+				c.setApellido(rs.getString("APELLIDO"));
+				c.setRif(rs.getString("CEDULA"));
+				c.setDireccion(rs.getString("DIRECCION"));
 				lista.add(c);
 			}
 			

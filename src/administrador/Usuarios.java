@@ -4,7 +4,16 @@ public class Usuarios {
 
 	 private String  xusuario;
 	private String xclave;
+	private String xclaveconfg;
 	
+public String getXclaveconfg() {
+		return xclaveconfg;
+	}
+
+	public void setXclaveconfg(String xclaveconfg) {
+		this.xclaveconfg = xclaveconfg;
+	}
+
 public	Usuarios()
 {
 	this.xclave="";

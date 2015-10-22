@@ -47,13 +47,13 @@ public class Proceso_buscar_factura extends Thread {
 					while(rs.next())
 					{
 						Factura f=new Factura();
-						f.setCodigo(rs.getString(1));
-						f.setCliente(rs.getString(2));
-						f.setFecha(rs.getString(3));
-						f.setHora(rs.getString(4));
-						f.setIva(rs.getString(5));
-						f.setUsuario(rs.getString(6));
-						f.setEstado(rs.getString(7));
+						f.setCodigo(rs.getString("COD_FAC"));
+						f.setCliente(rs.getString("CLIENTE"));
+						f.setFecha(rs.getString("FECHA"));
+						f.setHora(rs.getString("HORA"));
+						f.setIva(rs.getString("IVA"));
+						f.setUsuario(rs.getString("USUARIO"));
+						f.setEstado(rs.getString("ESTADO"));
 						
 				
 						ResultSet rs3=stm2.executeQuery("select  *from tipo_pago where COD_FACT='"+f.getCodigo()+"'");
@@ -61,8 +61,8 @@ public class Proceso_buscar_factura extends Thread {
 						while(rs3.next())
 						{
 							String xvector[]=new String[2];
-							xvector[0]=rs3.getString(2);
-							xvector[1]=rs3.getString(3);
+							xvector[0]=rs3.getString("TIPO_PAGO");
+							xvector[1]=rs3.getString("CANTIDAD");
 							f.setTipo_pago(xvector);
 						}
 						
@@ -71,10 +71,10 @@ public class Proceso_buscar_factura extends Thread {
 						while(rs2.next())
 						{
 					     String vector[]=new String[4];
-					     vector[0]=rs2.getString(2);
-					     vector[1]=rs2.getString(3);
-					     vector[2]=rs2.getString(4);
-					     vector[3]=rs2.getString(5);
+					     vector[0]=rs2.getString("COD_PRO");
+					     vector[1]=rs2.getString("CANTIDAD");
+					     vector[2]=rs2.getString("COSTO");
+					     vector[3]=rs2.getString("estado");
 					     f.setPro_fac(vector);
 						}
 						
