@@ -36,7 +36,14 @@ public class Inicio {
 			new Loguin(com.buscar_usuarios());
 			
 		new Mensaje().listo("Bienvenido(a) al Sistema "+users.getXusuario(),"Bienvenida");
-		new Interfas_Principal(users.getXusuario(),c.getNombre_empresa(),c.getRif(),c.getIva(),inventario,facturacion,clientes,facturas,proveedores,configuracion);
+		new Interfas_Principal(
+				users.getXusuario(),
+				c.getNombre_empresa(),
+				c.getRif(),c.getIva(),
+				inventario, facturacion,
+				clientes,facturas,
+				proveedores,configuracion
+		);
 		}
 }
 	}

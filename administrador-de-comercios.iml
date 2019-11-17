@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="EclipseModuleManager">
+    <libelement value="jar://$MODULE_DIR$/Jars/balloontip-1.2.1.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/Jars/commons-beanutils-1.8.0.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/Jars/commons-collections-2.1.1.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/Jars/commons-digester-2.1.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/Jars/commons-javaflow-20060411.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/Jars/commons-logging-1.1.1.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/Jars/DateChooser.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/Jars/DateChooserDemo.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/Jars/groovy-all-2.0.1.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/Jars/iText-2.1.7.js1.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/Jars/itext-xtra-5.1.1-javadoc.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/Jars/itext-xtra-5.1.1-sources.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/Jars/itext-xtra-5.1.1.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/Jars/itextpdf-5.1.1-javadoc.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/Jars/itextpdf-5.1.1-sources.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/Jars/itextpdf-5.1.1.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/Jars/jasperreports-5.0.1.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/Jars/jasperreports-applet-5.0.1.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/Jars/jasperreports-fonts-5.0.1.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/Jars/jasperreports-javaflow-5.0.1.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/Jars/png-encoder-1.5.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/Jars/poi-3.7-20101029.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/Jars/substance.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/Jars/mysql-connector-java-5.1.23-bin.jar!/" />
+    <src_description expected_position="0">
+      <src_folder value="file://$MODULE_DIR$/src" expected_position="0" />
+    </src_description>
+  </component>
+  <component name="NewModuleRootManager">
+    <output url="file://$MODULE_DIR$/bin" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
+    <orderEntry type="module-library">
+      <library name="balloontip-1.2.1.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/Jars/balloontip-1.2.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="commons-beanutils-1.8.0.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/Jars/commons-beanutils-1.8.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="commons-collections-2.1.1.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/Jars/commons-collections-2.1.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="commons-digester-2.1.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/Jars/commons-digester-2.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="commons-javaflow-20060411.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/Jars/commons-javaflow-20060411.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="commons-logging-1.1.1.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/Jars/commons-logging-1.1.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="DateChooser.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/Jars/DateChooser.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="DateChooserDemo.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/Jars/DateChooserDemo.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="groovy-all-2.0.1.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/Jars/groovy-all-2.0.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="iText-2.1.7.js1.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/Jars/iText-2.1.7.js1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="itext-xtra-5.1.1-javadoc.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/Jars/itext-xtra-5.1.1-javadoc.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="itext-xtra-5.1.1-sources.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/Jars/itext-xtra-5.1.1-sources.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="itext-xtra-5.1.1.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/Jars/itext-xtra-5.1.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="itextpdf-5.1.1-javadoc.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/Jars/itextpdf-5.1.1-javadoc.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="itextpdf-5.1.1-sources.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/Jars/itextpdf-5.1.1-sources.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="itextpdf-5.1.1.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/Jars/itextpdf-5.1.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="jasperreports-5.0.1.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/Jars/jasperreports-5.0.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="jasperreports-applet-5.0.1.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/Jars/jasperreports-applet-5.0.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="jasperreports-fonts-5.0.1.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/Jars/jasperreports-fonts-5.0.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="jasperreports-javaflow-5.0.1.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/Jars/jasperreports-javaflow-5.0.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="png-encoder-1.5.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/Jars/png-encoder-1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="poi-3.7-20101029.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/Jars/poi-3.7-20101029.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="substance.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/Jars/substance.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="mysql-connector-java-5.1.23-bin.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/Jars/mysql-connector-java-5.1.23-bin.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+  </component>
+</module>

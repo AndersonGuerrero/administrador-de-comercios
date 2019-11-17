@@ -117,7 +117,7 @@ public class Conexion {
 				usuariov[6]=rs3.getString(6);
 				usuariov[7]=rs3.getString(7);
 				usuariov[8]=rs3.getString(8);
-				usuariov[9]=new Dco_pw().Decodificacionm(rs3.getString(9));
+				//usuariov[9]=new Dco_pw().Decodificacionm(rs3.getString(9));
 				lista_users.add(usuariov);
 			}
 			
@@ -145,9 +145,9 @@ public class Conexion {
 			ResultSet rs=stm.executeQuery("select *from usuarios where USUARIO='"+usuario+"'");
 			
 			rs.next();
-		   
+				System.out.println(rs);
 			    user.setXusuario(rs.getString(1));
-			    user.setXclaveconfg(new Dco_pw().Decodificacionm(rs.getString(9)));
+			    user.setXclaveconfg(new Dco_pw().Decodificacionm(rs.getString(2)));
 			    Inicio.inventario=rs.getBoolean(3);
 				Inicio.facturas=rs.getBoolean(4);
 				Inicio.facturacion=rs.getBoolean(5);
